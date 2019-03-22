@@ -878,6 +878,10 @@ section.content, .car-info-wrap, .message-wrap .container {
 	padding-right: 15px;
 }
 
+#inicio{
+	padding-top: 630px;
+}
+
 /*.boxed_layout.margin header.affix-top {
 	width: 100%;
 	margin-top: 0;
@@ -1867,6 +1871,18 @@ body .inventory_box.car_listings.boxed.boxed_full .col-md-4:nth-child(3n + 1) {
 }
 
 @media (min-width:768px) {
+
+.boxed div.inventory .inventory .title {
+	left: 40px;
+}
+
+#inicio{
+	padding-top: 410px;
+}
+
+.figure{
+	left: 35px !important;
+}
 
 .left-none {
 	float: left;
@@ -2989,6 +3005,23 @@ header .bottom-header .navbar-default .navbar-brand .logo .primary_text {
  
 @media (min-width: 1200px) {
 
+.boxed div.inventory .inventory .title {
+	left: 20px;
+}
+
+.filtro {
+	padding-top: 10%;
+	background-color: eeeeee;
+}
+
+.figure{
+	left: -8px !important;
+}
+
+#inicio {
+	padding-top: 0px;
+}
+
 .car_heading {
 	margin-left: 214px;
 }
@@ -3379,6 +3412,17 @@ div.inventory .view-details {
 
 /*typo*/
 
+.ipad {
+    height: 40rem;
+}
+
+.boxed div.inventory .inventory .title {
+	left: 40px;
+}
+
+.figure{
+	left: 35px !important;
+}
 
 h1 {
 	font-size: 50px;

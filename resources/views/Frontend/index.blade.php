@@ -8,7 +8,7 @@
 <section class="banner-wrap">
     <div class="banner">
 
-        <div class="col-lg-4" style="padding-top: 9%;">
+        <div class="col-lg-4 filtro">
             <div class="class=search-form margin-top-20 padding-vertical-20"  >
                 <form class="form-signin inventory-heading efficiency-rating text-center padding-vertical-15 margin-bottom-40 ">
                     <h2 style="text-align: center;" ><b>Filtro de Búsqueda</b></h2>
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div id=" carousel-example-generic" class=" col-lg-8 carousel slide" data-ride="carousel">
+        <div id=" carousel-example-generic" class=" col-lg-8 carousel slide ipad" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
               <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -92,13 +92,14 @@
 </section>
 
 
-<section class="content">
+<section class="content" id="inicio">
     <div class="container">
 
             <div class="row generate_new">
                 <div class="inventory_box car_listings boxed boxed_full row">
                         <h4 class="margin-bottom-25 margin-top-none" style="color: #EC4B25;"><strong>DESTACADOS</strong> </h4>
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
                         <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
                             <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
                             <label for="vehicle_387"></label> 
@@ -114,7 +115,7 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                 <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
                                     <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
                                     <label for="vehicle_387"></label> 
@@ -130,7 +131,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                         <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
                                             <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
                                             <label for="vehicle_387"></label> 
@@ -147,7 +148,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-xs-12">
                                             <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
                                                 <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
                                                 <label for="vehicle_387"></label> 
