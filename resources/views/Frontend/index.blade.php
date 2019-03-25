@@ -1,3 +1,6 @@
+@php
+use Carbon\Carbon; 
+@endphp
 @extends ('Frontend.layouts.layout')
 
 @section('contenido')
@@ -15,26 +18,23 @@
                     <br>
                     <select class="form-control">
                         <option>Elige un tipo de coche</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                        @foreach($tipos as $tipo)
+                            <option value="{{$tipo->id}}">{{$tipo->descripcion}}</option>
+                          @endforeach
                       </select>
 
                       <select class="form-control">
                         <option>Elige una marca</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                          @foreach($marcas as $marca)
+                            <option value="{{$marca->id}}">{{$marca->descripcion}}</option>
+                          @endforeach
                       </select>
 
                       <select class="form-control">
                         <option>Elige un modelo</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                            @foreach($modelos as $modelo)
+                             <option value="{{$modelo->id}}">{{$modelo->descripcion}}</option>
+                            @endforeach
                       </select>
                     
                     <button class="lg-button btn-block" type="submit">Buscar</button>
@@ -46,36 +46,22 @@
 
         <div id=" carousel-example-generic" class=" col-lg-8 carousel slide" data-ride="carousel">
             <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
+             <ol class="carousel-indicators">
+               @foreach( $sliders as $slider )
+                  <li data-target="#carouselExampleControls" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+               @endforeach
+              </ol>
           
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-
-              <div class="item active carrousel" style="background-image: url({{asset('images/slide-2.jpg')}}) ">
+            @foreach( $sliders as $slider )
+              <div class="item item {{ $loop->first ? 'active' : '' }}  carrousel" style="background-image: url('/images/sliders/{{$slider->url_imagen}}') ">
                 <div class="carousel-caption">
-                    <h2 class="a">Texto de ejemplo</h2>
-                    <p>Lorem Sea veniam lucilius neglegentur ad, an per sumo volum voluptatibus. Qui cu everti repudiare.</p>
+                    <h2 class="a">{{ $slider->titulo }}</h2>
+                    <p>  {!! $slider->contenido !!}</p>
                 </div>
               </div>
-
-              <div class="item carrousel"  style="background-image: url({{asset('images/slider-macan.jpg')}})">
-                <div class="carousel-caption">
-                    <h2 class="a">Texto de ejemplo</h2>
-                    <p>Lorem Sea veniam lucilius neglegentur ad, an per sumo volum voluptatibus. Qui cu everti repudiare.</p>
-                </div>
-              </div>
-
-              <div class="item carrousel" style="background-image: url({{asset('images/slider-porsche.jpg')}})">
-                <div class="carousel-caption">
-                    <h2 class="a">Texto de ejemplo</h2>
-                    <p>Lorem Sea veniam lucilius neglegentur ad, an per sumo volum voluptatibus. Qui cu everti repudiare.</p>
-                </div>
-              </div>
-              
+            @endforeach    
             </div>
           
             <!-- Controls -->
@@ -98,14 +84,15 @@
             <div class="row generate_new">
                 <div class="inventory_box car_listings boxed boxed_full row">
                         <h4 class="margin-bottom-25 margin-top-none" style="color: #EC4B25;"><strong>DESTACADOS</strong> </h4>
+                         @foreach( $vehiculos as $vehiculo )
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
                             <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
                             <label for="vehicle_387"></label> 
-                           
-                            <a class="inventory" href="{{route('categorias/listado/detalle')}}">
-                                <div class="title">Seat León</div> 
-                                <img src="{{asset('images/destacado_1.png')}}" class="preview" alt="preview" width="200" height="150" data-gallery-images="[{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-1.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-2.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-3.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-4.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-5.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-6.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-7.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-8.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-9.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-10.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-11.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-12.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-13.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-14.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-15.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-16.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-17.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-18.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800}]" data-pswp-uid="1">
+                           <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
+                            <a class="inventory" href="{{url('categorias/listado/detalle/'.$vehiculo->id)}}">
+                                <div class="title">{{$vehiculo->marca}} {{$vehiculo->modelo}} {{$anio->year}}</div> 
+                                <img src="{{ url('/images/galeria/'.$vehiculo->img) }}"  class="preview" alt="preview" width="200" height="150" data-gallery-images="[{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-1.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-2.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-3.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-4.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-5.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-6.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-7.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-8.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-9.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-10.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-11.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-12.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-13.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-14.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-15.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-16.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-17.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-18.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800}]" data-pswp-uid="1">
                                     <div class="clearfix"></div> 
                                 </a>
                                 <div class="price"> 
@@ -113,56 +100,10 @@
                                 </div> 
                             </div>
                         </div>
+                    @endforeach
+                        
 
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
-                                    <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
-                                    <label for="vehicle_387"></label> 
-                                   
-                                    <a class="inventory" href="{{route('categorias/listado/detalle')}}">
-                                        <div class="title">Opel Crossland X</div> 
-                                        <img src="{{asset('images/destacado_2.png')}}" class="preview" alt="preview" width="200" height="150" data-gallery-images="[{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-1.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-2.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-3.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-4.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-5.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-6.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-7.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-8.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-9.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-10.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-11.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-12.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-13.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-14.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-15.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-16.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-17.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-18.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800}]" data-pswp-uid="1">
-                                            <div class="clearfix"></div> 
-                                        </a>
-                                        <div class="price"> 
-                                            <div class="figure"> $43,995</div>
-                                        </div> 
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                        <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
-                                            <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
-                                            <label for="vehicle_387"></label> 
-                                           
-                                            <a class="inventory" href="{{route('categorias/listado/detalle')}}">
-                                                <div class="title">Nissan Qashqai</div> 
-                                                <img src="{{asset('images/destacado_3.png')}}" class="preview" alt="preview" width="200" height="150" data-gallery-images="[{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-1.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-2.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-3.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-4.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-5.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-6.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-7.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-8.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-9.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-10.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-11.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-12.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-13.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-14.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-15.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-16.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-17.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-18.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800}]" data-pswp-uid="1">
-                                                
-                                                    <div class="clearfix"></div> 
-                                                </a>
-                                                <div class="price"> 
-                                                    <div class="figure"> $43,995</div>
-                                                </div> 
-                                            </div>
-                                        </div>
-
-                                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                            <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
-                                                <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
-                                                <label for="vehicle_387"></label> 
-                                                
-                                                <a class="inventory" href="{{route('categorias/listado/detalle')}}">
-                                                    <div class="title">Audi Q2</div> 
-                                                    <img src="{{asset('images/destacado_4.png')}}" class="preview" alt="preview" width="200" height="150" data-gallery-images="[{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-1.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-2.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-3.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-4.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-5.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-6.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-7.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-8.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-9.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-10.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-11.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-12.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-13.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-14.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-15.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-16.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-17.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-18.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800}]" data-pswp-uid="1">
-
-                                                        <div class="clearfix"></div> 
-                                                </a>
-                                                    <div class="price"> 
-                                                        <div class="figure"> $43,995</div>
-                                                    </div> 
-                                            </div>
-                                        </div>
+                                        
 
                 </div>
 
@@ -217,45 +158,17 @@
             <section class="car-block-wrap padding-bottom-40">
                     <div class="container">
                         <div class="row">
-    
+                         @foreach( $noticias as $noticia )
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
                                 <div class=" margin-bottom-30">
                                     <div class="card">
-                                        <div class="face front"><img class="img-responsive" src="{{asset('images/car1.jpg')}}" alt=""></div>
+                                        <div class="face front"><img class="img-responsive" src="{{ url('/images/noticias/'.$noticia->url_imagen) }}" alt=""></div>
                                     </div>
                                 </div>
-                                <h4><a href="{{route('noticia')}}">FACTORY READY FOR TRACK DAY</a></h4>
-                                <p class="margin-bottom-none">Sea veniam lucilius neglegentur ad, an per sumo volum
-                                    voluptatibus. Qui cu everti repudiare. Eam ut cibo nobis 
-                                    aperiam, elit qualisque at cum. Possit antiopam id est. 
-                                    Illud delicata ea mel, sed novum mucius id. Nullam qua.</p>
+                                <h4><a href="{{url('noticia/'.$noticia->id)}}">{!! $noticia->titulo!!}</a></h4>
+                                <p class="margin-bottom-none">{!! $noticia->resumen!!}</p>
                             </div>
-    
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
-                                <div class="margin-bottom-30">
-                                    <div class="card">
-                                        <div class="face front"><img class="img-responsive" src="{{asset('images/car2.jpg')}}" alt=""></div>
-                                    </div>
-                                </div>
-                                <h4><a href="{{route('noticia')}}">A SPORT UTILITY FOR THE FAMILY</a></h4>
-                                <p class="margin-bottom-none">Cum ut tractatos imperdiet, no tamquam facilisi qui. 
-                                    Eum tibique consectetuer in, an legimus referrentur vis, 
-                                    vocent deseruisse ex mel. Sed te idque graecis. Vel ne 
-                                    libris dolores, in mel graece dolorum.</p>
-                            </div>
-    
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
-                                <div class=" margin-bottom-30">
-                                    <div class="card">
-                                        <div class="face front"><img class="img-responsive" src="{{asset('images/car3.jpg')}}" alt=""></div>
-                                    </div>
-                                </div>
-                                <h4><a href="{{route('noticia')}}">MAKE AN EXECUTIVE STATEMENT</a></h4>
-                                <p class="margin-bottom-none">Te inermis cotidieque cum, sed ea utroque atomorum 
-                                    sadipscing. Qui id oratio everti scaevola, vim ea augue 
-                                    ponderum vituperatoribus, quo adhuc abhorreant 
-                                    omittantur ad. No his fierent perpetua consequat, et nis.</p>
-                            </div>
+                       @endforeach
                         </div>
                     </div>
                 </section>
@@ -324,78 +237,27 @@
                         </div>
 
                         <div class="row">
-                            
                             <div id="carousel-example-generic" class="carousel col-12 slide mt-5" data-ride="carousel">
                                 <div class="carousel-inner">
+                             @foreach($comentarios as $comentario)
 
-                                    <div class="item active">
+                                    <div class="item {{ $loop->first ? 'active' : '' }}">
                                         <div class="owl-item" >
                                             <div class="col-12">
                                                 <div class="d-flex justify-content-center ">
-                                                    <img class="img-circle " src="{{asset('images/c-car9.jpg')}}" alt="" width="140" height="140">
+                                                    <img class="img-circle "  src="{{ url('/images/comentarios/'.$comentario->url_imagen) }}" alt="" width="140" height="140">
                                 
                                                     <div class="number" >
-                                                        <em><h5>“Traveling it leaves you speechless, then turns you into a storyteller.”</h5></em>
+                                                        <em><h5>{!! $comentario->contenido !!}</h5></em>
                                                         <br> 
-                                                        <h6> <b>Ford, President / CEO</b></h6>
+                                                        <h6> <b>{{ $comentario->nombre }} / {{ $comentario->procedencia }}</b></h6>
                                                         <br> 
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="item">
-                                        <div class="owl-item" >
-                                            <div class="col-12">
-                                                <div class="d-flex justify-content-center ">
-                                                    <img class="img-circle " src="{{asset('images/c-car9.jpg')}}" alt="" width="140" height="140">
-                                
-                                                    <div class="number" >
-                                                        <em><h5>“Traveling it leaves you speechless, then turns you into a storyteller.”</h5></em>
-                                                        <br> 
-                                                        <h6> <b>Ford, President / CEO</b></h6>
-                                                        <br> 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="owl-item" >
-                                            <div class="col-12">
-                                                <div class="d-flex justify-content-center ">
-                                                    <img class="img-circle " src="{{asset('images/c-car9.jpg')}}" alt="" width="140" height="140">
-                                
-                                                    <div class="number" >
-                                                        <em><h5>“Traveling it leaves you speechless, then turns you into a storyteller.”</h5></em>
-                                                        <br> 
-                                                        <h6> <b>Ford, President / CEO</b></h6>
-                                                        <br> 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="item">
-                                        <div class="owl-item" >
-                                            <div class="col-12">
-                                                <div class="d-flex justify-content-center ">
-                                                    <img class="img-circle " src="{{asset('images/c-car9.jpg')}}" alt="" width="140" height="140">
-                                
-                                                    <div class="number" >
-                                                        <em><h5>“Traveling it leaves you speechless, then turns you into a storyteller.”</h5></em>
-                                                        <br> 
-                                                        <h6> <b>Ford, President / CEO</b></h6>
-                                                        <br> 
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+                                   @endforeach    
                                 </div>
                             </div>
                             
@@ -404,7 +266,7 @@
                 </div>
             </div>
         </div>
-
+<br><br><br><br>
 
         <div class="message-shadow"></div>
         <div class="clearfix"></div>
