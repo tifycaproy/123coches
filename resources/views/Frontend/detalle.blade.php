@@ -1,7 +1,21 @@
 @extends ('Frontend.layouts.layout')
 
 @section('contenido')
-
+<style type="text/css">
+    .row {
+    display:-ms-flexbox;
+    display:flex;
+    -ms-flex-wrap:wrap;
+    flex-wrap:wrap;
+    margin-right:-5px;
+    margin-left:-5px;
+}
+.col-6 {
+    -ms-flex:0 0 50%;
+    flex:0 0 50%;
+    max-width:50%
+}
+</style>
 <div class="clearfix"></div>
 <section id="secondary-banner" class="dynamic-image-8" style="background-image: url(&quot;{{asset('images/slide-2.jpg')}}&quot;);">
     <div class="container">
@@ -43,48 +57,25 @@
                         <!-- <div class="angled_badge red">
                             <span>Just Arrived</span>
                         </div> -->
-                        <section class="slider home-banner">
+                       <section class="slider home-banner">
                             <div class="flexslider" id="home-slider-canvas">
                                 <ul class="slides">
-                                    <li data-thumb="{{asset('images/boxster1_slide.jpg')}}"> <img src="{{asset('images/boxster1_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster1.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster4_slide.jpg')}}"> <img src="{{asset('images/boxster4_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster4.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster5_slide.jpg')}}"> <img src="{{asset('images/boxster5_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster5.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster8_slide.jpg')}}"> <img src="{{asset('images/boxster8_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster8.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster10_slide.jpg')}}"><img src="{{asset('images/boxster10_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster10.jpg')}}" /> </li>
-                                    <!-- full -->
-                                    <li data-thumb="{{asset('images/boxster2_slide.jpg')}}"> <img src="{{asset('images/boxster2_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster2.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster3_slide.jpg')}}"> <img src="{{asset('images/boxster3_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster3.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster6_slide.jpg')}}"> <img src="{{asset('images/boxster6_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster6.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster7_slide.jpg')}}"> <img src="{{asset('images/boxster7_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster7.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster9_slide.jpg')}}"> <img src="{{asset('images/boxster9_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster9.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster11_slide.jpg')}}"> <img src="{{asset('images/boxster11_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster11.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster12_slide.jpg')}}"> <img src="{{asset('images/boxster12_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster12.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster13_slide.jpg')}}"> <img src="{{asset('images/boxster13_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster13.jpg')}}" /> </li>
-                                    <li data-thumb="{{asset('images/boxster14_slide.jpg')}}"> <img src="{{asset('images/boxster14_slide.jpg')}}" alt="" data-full-image="{{asset('images/boxster14.jpg')}}" /> </li>
+                                 @foreach( $galerias as $galeria )
+                                    <li data-thumb="{{ url('/images/galeria/'.$galeria->img) }}" "> <img src="{{ url('/images/galeria/'.$galeria->img) }}" alt="" data-full-image="{{ url('/images/galeria/'.$galeria->img) }}" /> </li>
+                                  @endforeach
                                 </ul>
                             </div>
                         </section>
-                        <section class="home-slider-thumbs">
+                       <section class="home-slider-thumbs">
                             <div class="flexslider" id="home-slider-thumbs">
                                 <ul class="slides">
-                                    <li data-thumb="{{asset('images/thumbnail1.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail1.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail2.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail2.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail3.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail3.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail4.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail4.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail5.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail5.jpg')}}" alt="" /></a> </li>
-                                    <!-- full -->
-                                    <li data-thumb="{{asset('images/thumbnail6.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail6.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail7.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail7.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail8.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail8.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail9.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail9.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail10.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail10.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail11.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail11.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail12.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail12.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail13.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail13.jpg')}}" alt="" /></a> </li>
-                                    <li data-thumb="{{asset('images/thumbnail14.jpg')}}"> <a href="#"><img src="{{asset('images/thumbnail14.jpg')}}" alt="" /></a> </li>
+                                    @foreach( $galerias as $galeria )
+                                    <li data-thumb="{{ url('/images/galeria/'.$galeria->img) }}"> <img src="{{ url('/images/galeria/'.$galeria->img) }}" alt="" data-full-image="{{ url('/images/galeria/'.$galeria->img) }}" /> </li>
+                                  @endforeach
                                 </ul>
                             </div>
                         </section>
+
                     </div>
                     <!--CLOSE OF SLIDER--> 
                     <!--Slider End-->
@@ -94,224 +85,258 @@
                             <li class="active"><a href="#vehicle" data-toggle="tab">Perfil del vehículo</a></li>
                             <li><a href="#features" data-toggle="tab">Equipamiento</a></li>
                             <li><a href="#technical" data-toggle="tab">Daños</a></li>
-                            <li><a href="#location" data-toggle="tab">Vehicle Location</a></li>
-                            <li><a href="#comments" data-toggle="tab">Other Comments</a></li>
                         </ul>
                         <div id="myTabContent" class="tab-content margin-top-15 margin-bottom-20">
                             <div class="tab-pane fade in active" id="vehicle">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec luctus tincidunt aliquam. Aliquam gravida massa at sem vulputate 
-                                    interdum et vel eros. Maecenas eros enim, tincidunt vel turpis vel, dapibus tempus nulla. Donec vel nulla dui. Pellentesque sed ante 
-                                    sed ligula hendrerit condimentum. Suspendisse rhoncus fringilla ipsum quis porta. Morbi tincidunt viverra pharetra.</p>
-                                <p>Vestibulum vel mauris et odio lobortis laoreet eget eu magna. Proin mauris erat, luctus at nulla ut, lobortis mattis magna. Morbi 
-                                    a arcu lacus. Maecenas tristique velit vitae nisi consectetur, in mattis diam sodales. Mauris sagittis sem mattis justo bibendum, a 
-                                    eleifend dolor facilisis. Mauris nec pharetra tortor, ac aliquam felis. Nunc pretium erat sed quam consectetur fringilla.</p>
-                                <p>Aliquam ultricies nunc porta metus interdum mollis. Donec porttitor libero augue, vehicula tincidunt lectus placerat a. Sed 
-                                    tincidunt dolor non sem dictum dignissim. Nulla vulputate orci felis, ac ornare purus ultricies a. Fusce euismod magna orci, 
-                                    sit amet aliquam turpis dignissim ac. In at tortor at ligula pharetra sollicitudin. Sed tincidunt, purus eget laoreet elementum, 
-                                    felis est pharetra ante, tincidunt feugiat libero enim sed risus.</p>
-                                <p>Sed at leo sit amet mi bibendum aliquam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent cursus varius odio, 
-                                    non faucibus dui. Nunc vehicula lectus sed velit suscipit aliquam vitae eu ipsum. Curabitur hendrerit magna a quam semper, at tristique 
-                                    mauris gravida. Donec consequat elementum lorem, ac luctus ligula. Quisque viverra fringilla mi vel aliquam. Class aptent taciti sociosqu
-                                    ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="title">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4>Especificaciones</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lines-group">
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Matriculado por primera vez el</div>
+                                            <div class="col-6"> {!!  date("d/m/Y", strtotime($vehiculo[0]->fecha_matriculacion)) !!}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Kilometraje</div>
+                                            <div class="col-6">{{$vehiculo[0]->kilometraje}} Km</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Tipo de combustible</div>
+                                            <div class="col-6">{{$vehiculo[0]->combustible->descripcion}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Tipo de transmisión</div>
+                                            <div class="col-6">{{$vehiculo[0]->transmision->descripcion}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Normativa sobre emisiones de CO²</div>
+                                            <div class="col-6">{{$vehiculo[0]->normativa_emisiones_co2}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Emisiones de CO² (valor mínimo)</div>
+                                            <div class="col-6">{{$vehiculo[0]->emisiones_co2_valor_minimo}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Potencia</div>
+                                            <div class="col-6">{{$vehiculo[0]->potencia}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Cilindrada del motor</div>
+                                            <div class="col-6">{{$vehiculo[0]->cilindrada}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Tipo de carrocería</div>
+                                            <div class="col-6">{{$vehiculo[0]->tipo_carroceria}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Puertas</div>
+                                            <div class="col-6">{{$vehiculo[0]->puertas}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Número de puestos</div>
+                                            <div class="col-6">{{$vehiculo[0]->numero_puestos}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Número de bastidor</div>
+                                            <div class="col-6">{{$vehiculo[0]->numero_bastidor}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Número de bastidor (abreviado)</div>
+                                            <div class="col-6">{{$vehiculo[0]->numero_bastidor_abreviado}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Juegos de llaves</div>
+                                            <div class="col-6">{{$vehiculo[0]->juego_llaves}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Color de carrocería</div>
+                                            <div class="col-6">{{$vehiculo[0]->color_carroceria}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Color interior</div>
+                                            <div class="col-6">{{$vehiculo[0]->color_interior}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="title">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h4>Documentos e Historial</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lines-group">
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Permiso de circulación</div>
+                                            @if($vehiculo[0]->permiso_circulacion==1)   
+                                                <div class="col-6">Si</div>
+                                            @else
+                                                <div class="col-6">No</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Certificado de conformidad (CdC)</div>
+                                            @if($vehiculo[0]->certificado_conformidad==1)   
+                                                <div class="col-6">Si</div>
+                                            @else
+                                                <div class="col-6">No</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Registro de mantenimiento</div>
+                                            @if($vehiculo[0]->registro_mantenimiento==1)   
+                                                <div class="col-6">Si</div>
+                                            @else
+                                                <div class="col-6">No</div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Última fecha de revisión</div>
+                                            <div class="col-6">{!!  date("d/m/Y", strtotime($vehiculo[0]->ultima_revision)) !!}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="title">
+                                    <div class="row">
+                                        <div class="col"><h4>Procedencia</h4></div>
+                                    </div>
+                                </div>
+                                <div class="lines-group">
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">Lugar de recogida</div>
+                                            <div class="col-6">{{$vehiculo[0]->lugarRecogida->desc}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="row">
+                                            <div class="col-6">País de origen</div>
+                                            <div class="col-6">{{$vehiculo[0]->paisOrigen->desc}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                            <div class="row">
+                                                <div class="col-6">Oficina de venta</div>
+                                                <div class="col-6">{{$vehiculo[0]->oficinaVenta->desc}}</div>
+                                            </div>
+                                    </div>
+                                 </div>
                             </div>
                             <div class="tab-pane fade" id="features">
+                                <div class="col-md-12">
+                                    <h4>Comodidad</h4>
+                                </div>
                                 <ul class="fa-ul">
-                                    <li><i class="fa-li fas fa-check"></i> Adaptive Cruise Control</li>
-                                    <li><i class="fa-li fas fa-check"></i> Airbags</li>
-                                    <li><i class="fa-li fas fa-check"></i> Air Conditioning</li>
-                                    <li><i class="fa-li fas fa-check"></i> Alarm System</li>
-                                    <li><i class="fa-li fas fa-check"></i> Anti-theft Protection</li>
-                                    <li><i class="fa-li fas fa-check"></i> Audio Interface</li>
-                                    <li><i class="fa-li fas fa-check"></i> Automatic Climate Control</li>
-                                    <li><i class="fa-li fas fa-check"></i> Automatic Headlights</li>
-                                    <li><i class="fa-li fas fa-check"></i> Auto Start/Stop</li>
-                                    <li><i class="fa-li fas fa-check"></i> Bi-Xenon Headlights</li>
-                                    <li><i class="fa-li fas fa-check"></i> Bluetooth® Handset</li>
-                                    <li><i class="fa-li fas fa-check"></i> BOSE® Surround Sound</li>
-                                    <li><i class="fa-li fas fa-check"></i> Burmester® Surround Sound</li>
-                                    <li><i class="fa-li fas fa-check"></i> CD/DVD Autochanger</li>
-                                    <li><i class="fa-li fas fa-check"></i> CDR Audio</li>
-                                    <li><i class="fa-li fas fa-check"></i> Cruise Control</li>
-                                    <li><i class="fa-li fas fa-check"></i> Direct Fuel Injection</li>
-                                    <li><i class="fa-li fas fa-check"></i> Electric Parking Brake</li>
-                                    <li><i class="fa-li fas fa-check"></i> Floor Mats</li>
-                                    <li><i class="fa-li fas fa-check"></i> Garage Door Opener</li>
-                                    <li><i class="fa-li fas fa-check"></i> Leather Package</li>
-                                    <li><i class="fa-li fas fa-check"></i> Locking Rear Differential</li>
-                                    <li><i class="fa-li fas fa-check"></i> Luggage Compartments</li>
-                                    <li><i class="fa-li fas fa-check"></i> Manual Transmission</li>
-                                    <li><i class="fa-li fas fa-check"></i> Navigation Module</li>
-                                    <li><i class="fa-li fas fa-check"></i> Online Services</li>
-                                    <li><i class="fa-li fas fa-check"></i> ParkAssist</li>
-                                    <li><i class="fa-li fas fa-check"></i> Porsche Communication</li>
-                                    <li><i class="fa-li fas fa-check"></i> Power Steering</li>
-                                    <li><i class="fa-li fas fa-check"></i> Reversing Camera</li>
-                                    <li><i class="fa-li fas fa-check"></i> Roll-over Protection</li>
-                                    <li><i class="fa-li fas fa-check"></i> Seat Heating</li>
-                                    <li><i class="fa-li fas fa-check"></i> Seat Ventilation</li>
-                                    <li><i class="fa-li fas fa-check"></i> Sound Package Plus</li>
-                                    <li><i class="fa-li fas fa-check"></i> Sport Chrono Package</li>
-                                    <li><i class="fa-li fas fa-check"></i> Steering Wheel Heating</li>
-                                    <li><i class="fa-li fas fa-check"></i> Tire Pressure Monitoring</li>
-                                    <li><i class="fa-li fas fa-check"></i> Universal Audio Interface</li>
-                                    <li><i class="fa-li fas fa-check"></i> Voice Control System</li>
-                                    <li><i class="fa-li fas fa-check"></i> Wind Deflector</li>
+                                    @if($vehiculo[0]->aire_acondicionado==1)
+                                    <li><i class="fa-li fas fa-check"></i>Aire acondicionado</li>
+                                    @endif
+                                    @if($vehiculo[0]->control_distancia==1)
+                                    <li><i class="fa-li fas fa-check"></i>Control a distancia</li>
+                                    @endif
+                                    @if($vehiculo[0]->nav_satelite==1)
+                                    <li><i class="fa-li fas fa-check"></i>Navegación por satélite</li>
+                                    @endif
+                                    @if($vehiculo[0]->volante_multifuncional==1)
+                                    <li><i class="fa-li fas fa-check"></i>Volante multifuncional</li>
+                                    @endif
+                                    @if($vehiculo[0]->direccion_asistida==1)
+                                    <li><i class="fa-li fas fa-check"></i>Dirección asistida</li>
+                                    @endif
+                                    @if($vehiculo[0]->interfal_bluetooth==1)
+                                    <li><i class="fa-li fas fa-check"></i>Interfaz Bluetooth</li>
+                                    @endif
+                                    @if($vehiculo[0]->elevalunas_electrico==1)
+                                    <li><i class="fa-li fas fa-check"></i>Elevalunas eléctrico</li>
+                                    @endif
+                                    @if($vehiculo[0]->retrovisores_exteriores_calefactables==1)
+                                    <li><i class="fa-li fas fa-check"></i>Retrovisores calefactables</li>
+                                    @endif
+                                     @if($vehiculo[0]->retrovisores_exteriores_electricos==1)
+                                    <li><i class="fa-li fas fa-check"></i>Retrovisores eléctricos</li>
+                                    @endif
+                                </ul>
+                                <div class="col-md-12">
+                                    <h4>Acabado</h4>
+                                </div>
+                                 <ul class="fa-ul">
+                                    @if($vehiculo[0]->tapiceria==1)
+                                    <li><i class="fa-li fas fa-check"></i>Tapicería</li>
+                                    @endif
+                                    @if($vehiculo[0]->volante_cuero==1)
+                                    <li><i class="fa-li fas fa-check"></i>Volante de cuero</li>
+                                    @endif
+                                    @if($vehiculo[0]->pintura_metalizada==1)
+                                    <li><i class="fa-li fas fa-check"></i>Pintura metalizada</li>
+                                    @endif
+                                </ul>
+                                <div class="col-md-12">
+                                    <h4>Ruedas y neumáticos</h4>
+                                </div>
+                                <ul class="fa-ul">
+                                    @if($vehiculo[0]->llantas_aleacion==1)
+                                    <li><i class="fa-li fas fa-check"></i>Llantas de aleación:</li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="tab-pane fade" id="technical">
-                                <table class="technical">
-                                    <thead>
-                                        <tr>
-                                            <th>Engine</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Layout / number of cylinders</td>
-                                            <td>6</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Displacement</td>
-                                            <td>3.4 l</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Engine Layout</td>
-                                            <td>Mid-engine</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Horespower</td>
-                                            <td>315 hp</td>
-                                        </tr>
-                                        <tr>
-                                            <td>@ rpm</td>
-                                            <td>6,700 rpm</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Torque</td>
-                                            <td>266 lb.-ft.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Compression ratio</td>
-                                            <td>12.5 : 1</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table class="technical">
-                                    <thead>
-                                        <tr>
-                                            <th>Performance</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Top Track Speed</td>
-                                            <td>173 mph</td>
-                                        </tr>
-                                        <tr>
-                                            <td>0 - 60 mph</td>
-                                            <td>4.8 s</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table class="technical">
-                                    <thead>
-                                        <tr>
-                                            <th>Transmission</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Manual Gearbox</td>
-                                            <td>6-speed with dual-mass flywheel and self-adjusting clutch</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table class="technical">
-                                    <thead>
-                                        <tr>
-                                            <th>Fuel consumption</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>City (estimate)</td>
-                                            <td>20</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Highway (estimate)</td>
-                                            <td>28</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table class="technical">
-                                    <thead>
-                                        <tr>
-                                            <th>Body</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Length</td>
-                                            <td>172.2 in.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Width</td>
-                                            <td>70.9 in.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Height</td>
-                                            <td>50.4 in.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Wheelbase</td>
-                                            <td>97.4 in.</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Maximum payload</td>
-                                            <td>739 lbs</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Curb weight</td>
-                                            <td>2910 lbs</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table class="technical">
-                                    <thead>
-                                        <tr>
-                                            <th>Capacities</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Luggage compartment volume</td>
-                                            <td>5.3 cu. ft. (front) / 4.6 cu. ft. (rear)</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fuel Tank Capacity</td>
-                                            <td>16.9 gal.</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="col-12">
+                                    <h4>Documentación</h4>
+                                </div>
+                                @if(count($danos)>0)
+                                <li><a target="_blank"  href="/archivos/daños/pdf/{{$danos[0]->archivo}}" class="link">Descargar informe de daños</a> <i class="fa fa-file-pdf-o"></i></li>
+                                <div class="damages-description">
+                                    <h4>Observaciones</h4>
+                                    <p>{{ $danos[0]->descripcion }}</p>
+                                </div>
+                                @else
+                                <br>
+                                 <h5>Informe de Daños no Registrados</h5>
+                              
+                                @endif
                             </div>
-                            <div class="tab-pane fade" id="location">
-                                <div id='google-map-listing' class="contact" data-longitude='-79.38' data-latitude='43.65' data-zoom='11' style="height: 350px;" data-parallax="false"></div>
-                            </div>
-                            <div class="tab-pane fade" id="comments">
-                                <p>Vestibulum sit amet ligula eget nibh cursus bibendum et id eros. Nam congue, dui quis consectetur blandit, neque neque mattis diam, 
-                                    vitae egestas urna lectus eu turpis. In vitae commodo sem. Etiam vehicula sed ligula malesuada cursus. Cras augue elit, tempus at dignissim 
-                                    sed, egestas eget leo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam mollis luctus nibh et 
-                                    bibendum. Morbi congue lectus nec congue congue. Nulla molestie feugiat quam ac sollicitudin. Nulla sed congue lectus. Donec blandit elit 
-                                    sit amet aliquet laoreet.</p>
-                                <p><img src="images/engine.png" alt="engine" /></p>
-                            </div>
-                        </div>
+                       </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>

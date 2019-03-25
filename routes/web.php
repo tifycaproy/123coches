@@ -18,10 +18,12 @@
 // FRONTEND
 
 Route::get('/', 'Frontend\homeController@index')->name('/');
-Route::get('noticia', 'Frontend\homeController@noticia')->name('noticia');
+Route::get('noticia/{id}', 'Frontend\NoticiasController@index');
+Route::get('categorias/listado/detalle/{id}', 'Frontend\VehiculoController@detalleVehiculo');
 Route::get('categorias/listado/detalle', 'Frontend\homeController@detalle')->name('categorias/listado/detalle');
 Route::get('categorias/listado', 'Frontend\homeController@listado')->name('categorias/listado');
 Route::get('coches', 'Frontend\homeController@coches')->name('coches');
+Route::get('categorias_coches', 'Frontend\homeController@categorias')->name('categorias_coches');
 Route::get('sesion', 'Frontend\homeController@sesion')->name('sesion');
 Route::get('registro', 'Frontend\homeController@registro')->name('registro');
 
