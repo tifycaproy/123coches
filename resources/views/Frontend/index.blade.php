@@ -13,25 +13,25 @@ use Carbon\Carbon;
 
         <div class="col-lg-4" style="padding-top: 9%;">
             <div class="class=search-form margin-top-20 padding-vertical-20"  >
-                <form class="form-signin inventory-heading efficiency-rating text-center padding-vertical-15 margin-bottom-40 ">
+                <form class="form-signin inventory-heading efficiency-rating text-center padding-vertical-15 margin-bottom-40 "  action="{{route('coches')}}" method="GET">
                     <h2 style="text-align: center;" ><b>Filtro de Búsqueda</b></h2>
                     <br>
-                    <select class="form-control">
+                    <!--select class="form-control">
                         <option>Elige un tipo de coche</option>
                         @foreach($tipos as $tipo)
                             <option value="{{$tipo->id}}">{{$tipo->descripcion}}</option>
                           @endforeach
-                      </select>
+                      </select-->
 
-                      <select class="form-control">
-                        <option>Elige una marca</option>
+                      <select class="form-control" name="marca" id="marca">
+                        <option value="">Elige una marca</option>
                           @foreach($marcas as $marca)
                             <option value="{{$marca->id}}">{{$marca->descripcion}}</option>
                           @endforeach
                       </select>
 
-                      <select class="form-control">
-                        <option>Elige un modelo</option>
+                      <select class="form-control" name="modelo" id="modelo">
+                        <option value="">Elige un modelo</option>
                             @foreach($modelos as $modelo)
                              <option value="{{$modelo->id}}">{{$modelo->descripcion}}</option>
                             @endforeach
@@ -39,7 +39,7 @@ use Carbon\Carbon;
                     
                     <button class="lg-button btn-block" type="submit">Buscar</button>
                     <br>
-                    <h5 style="text-align: center;" >Ver todas las <a href="{{route('registro')}}"><b>Ofertas</b></h5>
+                    <!--h5 style="text-align: center;" >Ver todas las <a href="{{route('registro')}}"><b>Ofertas</b></h5-->
                 </form>
             </div>
         </div>

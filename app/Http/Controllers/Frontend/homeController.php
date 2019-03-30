@@ -111,43 +111,9 @@ class homeController extends Controller{
                                 ->orderBy('marcas.descripcion', 'ASC')->get();
 
          return view('Frontend.coches', compact('marcas', 'modelos', 'combustibles', 'transmisions', 'paises','vehiculos',  'marcascant', 'anios'));
-
-    
-
    
 }
-
- public function listadoMarca(Request $request){
-
-        $marcas = Marca::all();
-        $combustibles = Combustible::all();
-        $transmisions = Transmision::all();
-        $paises = Paises::all();
-        $modelos = Modelo::all();
-
-        $marca =  $request->id;
-        $id_lista =null;
-
-        $marcascant=Vehiculo::join('marcas', 'vehiculo.id_marca', '=', 'marcas.id')
-                                ->select('marcas.id','descripcion', DB::raw("(SELECT COUNT(vehiculo.id) FROM  vehiculo where marcas.id = vehiculo.id_marca)  as cant"))
-                                ->groupBy('marcas.id')
-                                ->orderBy('marcas.descripcion', 'ASC')->get();
-
-        $vehiculos = Vehiculo::Relaciones()->leftjoin('subasta_vehiculo', 'subasta_vehiculo.vehiculo_id', '=', 'vehiculo.id')
-                             ->leftjoin('tipo_subastas', 'tipo_subastas.id', '=', 'subasta_vehiculo.tipo_subasta_id')
-                             //->join('galeria', 'vehiculo.id', '=', 'galeria.id_vehiculo')
-                             ->where('vehiculo.id_marca', $marca)
-                             ->groupBy('vehiculo.id')->paginate(3);
-
-
-         return view('Frontend.listado', compact('marcas', 'modelos', 'combustibles', 'transmisions', 'paises','vehiculos', 'id_lista', 'marcascant'));
-
-
-
-    }
-       
-    
-
+   
     public function registro(){
         return view('Frontend.registro');
     }
