@@ -113,7 +113,7 @@ use Carbon\Carbon;
                 <div class=" col-md-3 col-lg-pull-9 col-md-pull-9 left-sidebar">
                     <div class="left_inventory">
                         <h3 class="margin-bottom-25">FILTRO DE BUSQUEDA</h3>
-                         <form class="clearfix select-form padding-bottom-50" action="{{url('busquedaCategoria')}}" method="GET">
+                         <form class="clearfix select-form padding-bottom-50" action="{{route('coches')}}" method="GET">
                            
                             <div class="my-dropdown min-years-dropdown max-dropdown">
                                 <select name="marca" id="marca" class="css-dropdowns" tabindex="1" sb="55679103" style="display: none;">
@@ -173,7 +173,7 @@ use Carbon\Carbon;
                                 <h3 class="margin-bottom-25">AÑO</h3>
                                 <ul>
                                     @foreach($anios as $anio)
-                                    <li><a href="#"><span>{{$anio->anio}} <strong>({{$anio->cant}})</strong></span></a></li>
+                                    <li><a href="{{route('coches',['anio'=> $anio->anio])}}"><span>{{$anio->anio}} <strong>({{$anio->cant}})</strong></span></a></li>
                                     @endforeach                                    
                                 </ul>
                             </div>
@@ -181,7 +181,7 @@ use Carbon\Carbon;
                                 <h3 class="margin-bottom-25">MARCA</h3>
                                  <ul>
                                     @foreach($marcascant as $marca)
-                                    <li><a href="{{url('categorias/listadoMarca', $marca->id)}}"><span>{{$marca->descripcion}} <strong>({{$marca->cant}})</strong></span></a></li>
+                                    <li><a href="{{route('coches',['marca'=> $marca->id])}}"><span>{{$marca->descripcion}} <strong>({{$marca->cant}})</strong></span></a></li>
                                     @endforeach
                                 </ul>
                             </div>

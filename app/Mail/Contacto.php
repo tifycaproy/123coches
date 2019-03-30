@@ -8,8 +8,10 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
 
+
 class Contacto extends Mailable
 {
+
     use Queueable, SerializesModels;
 
     /**
@@ -22,26 +24,31 @@ class Contacto extends Mailable
         //
     }
 
+
     /**
      * Build the message.
      *
      * @return $this
      */
-    public function build(Request $request)
+
+     public function build(Request $request)
     {
 
-        $name    =$request['name'];
-        $mail    =$request['mail'];
+
+        $nombre    =$request['nombre'];
+        $email    =$request['email'];
         $mensaje =$request['mensaje'];
 
-        return $this->from('info@consuljuridica.com')
-                    ->view('Frontend.Mail.contacto')
+
+
+        return $this->from('irenemontilla16@gmail.com')
+                    ->view('emails.contacto')
                     ->with([
-                            'name' => $name,
-                            'mail' => $mail,
+                            'nombre' => $nombre,
+                            'email' => $email,
                             'mensaje' => $mensaje,
                       ])
                     ->subject('Mensaje Web');
-
     }
+
 }

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comun extends Model
 {
-    //
+    protected $table = "comuns";
 }

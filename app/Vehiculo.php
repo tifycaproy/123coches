@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
+
 class Vehiculo extends Model
 {
     protected $table = "vehiculo";
@@ -18,7 +20,51 @@ class Vehiculo extends Model
             'transmision:id,descripcion','tipo:id,descripcion', 'paisOrigen:id,desc',
             'combustible:id,descripcion', 'lugarRecogida:id,desc', 'oficinaVenta:id,desc',
             'usuario', 'tiposSubasta.pais:id,desc'
-        );
+        )->where('vehiculo.id_tipo', 2);
+    }
+
+    public function scopeMarcas($query, $marca){
+
+        if($marca)
+            return $query->where('vehiculo.id_marca', $marca);
+
+    }
+    public function scopeModelos($query, $modelo){
+
+        if($modelo)
+            return $query->where('vehiculo.id_modelo', $modelo);
+
+    }
+    public function scopeCombustibles($query, $combustible){
+
+        if($combustible)
+            return $query->where('vehiculo.id_combustible', $combustible);
+
+    }
+    public function scopeKilometrajes($query, $kilometraje){
+
+        if($kilometraje)
+            return $query->where('vehiculo.kilometraje', $kilometraje);
+
+    }
+    public function scopeTransmisions($query, $transmision){
+
+        if($transmision)
+            return $query->where('vehiculo.id_transmision', $transmision);
+
+    }
+    public function scopeProcedencias($query, $procedencia){
+
+        if($procedencia)
+            return $query->where('vehiculo.oficina_venta', $procedencia);
+
+    }
+
+    public function scopeAnios($query, $anio){
+
+        if($anio)
+            return $query->where(DB::raw("YEAR(fecha_matriculacion)"),$anio);
+
     }
 
 	// Modelos

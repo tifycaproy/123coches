@@ -26,6 +26,10 @@ Route::get('coches', 'Frontend\homeController@coches')->name('coches');
 Route::get('categorias_coches', 'Frontend\homeController@categorias')->name('categorias_coches');
 Route::get('sesion', 'Frontend\homeController@sesion')->name('sesion');
 Route::get('registro', 'Frontend\homeController@registro')->name('registro');
+Route::post('enviar', 'Frontend\ContactoController@procesar')->name('send_mail');
+
+
+
 
 
 
