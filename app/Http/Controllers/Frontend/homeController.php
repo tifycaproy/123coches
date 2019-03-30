@@ -76,190 +76,29 @@ class homeController extends Controller{
         $paises = Paises::all();
         $modelos = Modelo::all();
 
-         $marca=$request->marca;
+        $marca=$request->marca;
         $modelo=$request->modelo;
         $combustible=$request->combustible;
         $kilometraje=$request->kilometraje;
         $transmision=$request->transmision;
         $procedencia=$request->procedencia;
+        $anio=$request->anio;
         
+        $vehiculos = Vehiculo::groupBy('vehiculo.id')
+                              ->Relaciones()
+                              ->Marcas($marca)
+                              ->Modelos($modelo)
+                              ->Combustibles($combustible)
+                              ->Kilometrajes($kilometraje)
+                              ->Transmisions($transmision)
+                              ->Procedencias($procedencia)
+                              ->Anios($anio)
+                              ->paginate(3);
+       
 
-if($marca!="" && $modelo=="" && $combustible=="" && $kilometraje=="" && $transmision=="" && $procedencia=="" )
-{   
-         $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_marca', $marca)->groupBy('vehiculo.id')->paginate(3);
-       
-}
-if($marca=="" && $modelo!="" && $combustible=="" && $kilometraje=="" && $transmision=="" && $procedencia=="" )
-{   
-         $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_modelo', $modelo)->groupBy('vehiculo.id')->paginate(3);
-       
-}
-if($marca=="" && $modelo=="" && $combustible!="" && $kilometraje=="" && $transmision=="" && $procedencia=="" )
-{   
-         $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_combustible', $combustible)->groupBy('vehiculo.id')->paginate(3);
-       
-}
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje!="" && $transmision=="" && $procedencia=="" )
-{   
-         $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.kilometraje', $kilometraje)->groupBy('vehiculo.id')->paginate(3);
-       
-}
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje=="" && $transmision!="" && $procedencia=="" )
-{   
-         $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_transmision', $transmision)->groupBy('vehiculo.id')->paginate(3);
-       
-}
 
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje=="" && $transmision=="" && $procedencia!="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo!="" && $combustible!="" && $kilometraje!="" && $transmision!="" && $procedencia!="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_modelo', $modelo)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_combustible', $combustible)
-                             ->where('vehiculo.kilometraje', $kilometraje)
-                             ->where('vehiculo.id_transmision', $transmision)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible!="" && $kilometraje!="" && $transmision!="" && $procedencia!="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_combustible', $combustible)
-                             ->where('vehiculo.kilometraje', $kilometraje)
-                             ->where('vehiculo.id_transmision', $transmision)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje!="" && $transmision!="" && $procedencia!=""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.kilometraje', $kilometraje)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_transmision', $transmision)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje=="" && $transmision!="" && $procedencia!=""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_transmision', $transmision)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca!="" && $modelo!="" && $combustible=="" && $kilometraje=="" && $transmision=="" && $procedencia==""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_marca', $marca)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_modelo', $modelo)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca!="" && $modelo=="" && $combustible!="" && $kilometraje=="" && $transmision=="" && $procedencia=="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_marca', $marca)
-                             ->where('vehiculo.id_combustible', $combustible)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca!="" && $modelo=="" && $combustible=="" && $kilometraje!="" && $transmision=="" && $procedencia=="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_marca', $marca)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.kilometraje', $kilometraje)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca!="" && $modelo=="" && $combustible=="" && $kilometraje=="" && $transmision!="" && $procedencia=="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_marca', $marca)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_transmision', $transmision)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca!="" && $modelo=="" && $combustible=="" && $kilometraje=="" && $transmision=="" && $procedencia!="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_marca', $marca)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo!="" && $combustible!="" && $kilometraje=="" && $transmision=="" && $procedencia==""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_modelo', $modelo)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_combustible', $combustible)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo!="" && $combustible=="" && $kilometraje!="" && $transmision=="" && $procedencia=="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_modelo', $modelo)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.kilometraje', $kilometraje)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo!="" && $combustible=="" && $kilometraje=="" && $transmision!="" && $procedencia=="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_modelo', $modelo)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_transmision', $transmision)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo!="" && $combustible=="" && $kilometraje=="" && $transmision=="" && $procedencia!=""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_modelo', $modelo)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible!="" && $kilometraje!="" && $transmision=="" && $procedencia=="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_combustible', $combustible)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.kilometraje', $kilometraje)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible!="" && $kilometraje=="" && $transmision!="" && $procedencia=="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_combustible', $combustible)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_transmision', $transmision)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible!="" && $kilometraje=="" && $transmision=="" && $procedencia!="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_combustible', $combustible)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje!="" && $transmision!="" && $procedencia==""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.kilometraje', $kilometraje)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_transmision', $transmision)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje!="" && $transmision=="" && $procedencia!=""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.kilometraje', $kilometraje)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca!="" && $modelo!="" && $combustible!="" && $kilometraje=="" && $transmision=="" && $procedencia==""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_marca', $marca)
-                             ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_modelo', $modelo)
-                             ->where('vehiculo.id_combustible', $combustible)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje!="" && $transmision!="" && $procedencia!=""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.kilometraje', $kilometraje)
-                            ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.id_transmision', $transmision)
-                             ->where('vehiculo.oficina_venta', $procedencia)->groupBy('vehiculo.id')->paginate(3);
-}
-if($marca=="" && $modelo=="" && $combustible!="" && $kilometraje!="" && $transmision!="" && $procedencia=="" )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_combustible', $combustible)
-                            ->where('vehiculo.id_tipo', 2)
-                             ->where('vehiculo.kilometraje', $kilometraje)
-                             ->where('vehiculo.id_transmision', $transmision)->groupBy('vehiculo.id')->paginate(3);
-}
 
-if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje=="" && $transmision=="" && $procedencia=="" )
-{
-            $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_tipo', 2)->groupBy('vehiculo.id')->paginate(3);
-
-            $anios = Vehiculo::select(DB::raw("YEAR(fecha_matriculacion) as anio"), DB::raw("COUNT(id) as cant"))
+           $anios = Vehiculo::select(DB::raw("YEAR(fecha_matriculacion) as anio"), DB::raw("COUNT(id) as cant"))
                                ->where(DB::raw("YEAR(fecha_matriculacion)"), DB::raw("YEAR(fecha_matriculacion)"))
                            ->where('id_tipo', 2)
                            ->groupBy(DB::raw("YEAR(fecha_matriculacion)"))
@@ -274,27 +113,8 @@ if($marca=="" && $modelo=="" && $combustible=="" && $kilometraje=="" && $transmi
          return view('Frontend.coches', compact('marcas', 'modelos', 'combustibles', 'transmisions', 'paises','vehiculos',  'marcascant', 'anios'));
 
     
-}
-if($marca!="" && $modelo!="" && $combustible!="" && $kilometraje!="" && $transmision!="" && $procedencia!=""  )
-{
-        $vehiculos = Vehiculo::Relaciones()->where('vehiculo.id_marca', $marca)
-                             ->where('vehiculo.id_modelo', $modelo)
-                             ->where('vehiculo.id_combustible', $combustible)
-                             ->where('vehiculo.kilometraje', $kilometraje)
-                             ->where('vehiculo.id_transmision', $transmision)
-                             ->where('vehiculo.oficina_venta', $procedencia)
-                             ->where('tipo_subastas.id', $id_lista)->groupBy('vehiculo.id')->paginate(3);
-}
 
-        $marcascant=Vehiculo::leftjoin('marcas', 'vehiculo.id_marca', '=', 'marcas.id')
-                                ->select('marcas.id','descripcion', DB::raw("(SELECT COUNT(vehiculo.id) FROM  vehiculo where marcas.id = vehiculo.id_marca)  as cant"))
-                                ->groupBy('marcas.id')
-                                ->orderBy('marcas.descripcion', 'ASC')->get();
-
-     
-
-        return view('Frontend.coches', compact('marcas', 'modelos', 'combustibles', 'transmisions', 'paises','vehiculos',  'marcascant'));
-    
+   
 }
 
  public function listadoMarca(Request $request){

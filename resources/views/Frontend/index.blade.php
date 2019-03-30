@@ -191,7 +191,7 @@ use Carbon\Carbon;
                     <!--welcome ends-->
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-right-none sm-padding-left-none md-padding-left-15 xs-padding-left-none padding-bottom-40 scroll_effect fadeInUp" data-wow-delay=".2s" style="z-index: 100; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" style="width: 100%; height: 35%;" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" style="width: 100%; height: 50%;" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
                         </div>
                     </div>
                     <!--invetory ends--> 
@@ -286,22 +286,25 @@ use Carbon\Carbon;
                             <div class="col-md-6 left-information">
                                 <div class="contact_information information_head clearfix">
                                     <h3 class="margin-bottom-25 margin-top-none">INFORMACIÓN DE CONTACTO</h3>
-                                    <div class="address clearfix margin-right-25 padding-bottom-40">
+                                    <div class="address clearfix margin-right-25 ">
                                         <div class="icon_address">
                                             <p><i class="fas fa-map-marker-alt"></i><strong>Dirección:</strong></p>
                                         </div>
                                         <div class="contact_address">
-                                            <p class="margin-bottom-none">Company Name<br>
-                                                1234 Street Name <br>
-                                                City Name, AB  12345 <br>
-                                                United States</p>
+                                            <p class="margin-bottom-none">{{$direccion}}</p>
                                         </div>
                                     </div>
-                                    <div class="address clearfix address_details margin-right-25 padding-bottom-40">
+                                    <div class="address clearfix address_details margin-right-25 ">
                                         <ul class="margin-bottom-none">
-                                            <li><i class="fas fa-phone"></i><strong>Teléfono:</strong> <span>1-800-123-4567</span></li>
-                                            <li><i class="fas fa-envelope"></i><strong>Correo:</strong> <a href="mailto:sales@company.com">sales@company.com</a></li>
-                                            <li class="padding-bottom-none"><i class="fas fa-laptop"></i><strong>Web:</strong> <a href="http://company.com">www.company.com</a></li>
+                                            @isset($telefono)
+                                            <li><i class="fas fa-phone"></i><strong>Teléfono:</strong> <span> {{$telefono}}</span></li>
+                                            @endisset
+                                            @isset($email)
+                                            <li><i class="fas fa-envelope"></i><strong>Correo:</strong> <a href="mailto:sales@company.com">{{$email}}</a></li>
+                                            @endisset
+                                            @isset($web)
+                                            <li class="padding-bottom-none"><i class="fas fa-laptop"></i><strong>Web:</strong> <a href="http://company.com">{{$web}}</a></li>
+                                            @endisset
                                         </ul>
                                     </div>
                                 </div>
@@ -309,16 +312,26 @@ use Carbon\Carbon;
                             <!--LEFT INFORMATION--> 
                             
                             <!--RIGHT INFORMATION-->
-                            <div class="col-md-5 col-lg-offset-1 col-md-offset-1 padding-right-none xs-padding-left-none sm-padding-left-none xs-margin-top-30">
+                           <div class="col-md-5 col-lg-offset-1 col-md-offset-1 padding-right-none xs-padding-left-none sm-padding-left-none xs-margin-top-30">
                                 <div class="contact_wrapper information_head">
                                     <h3 class="margin-bottom-25 margin-top-none">CONTÁCTANOS</h3>
                                     <div class="form_contact margin-bottom-20">
                                         <div id="result"></div>
                                         <fieldset id="contact_form">
-                                            <input type="text" name="name" class="form-control margin-bottom-25" placeholder="Nombre" />
-                                            <input type="email" name="email" class="form-control margin-bottom-25" placeholder="Correo Electrónico" />
-                                            <textarea name="msg" class="form-control margin-bottom-25 contact_textarea" placeholder="Tu mensaje" rows="7"></textarea>
-                                            <input id="submit_btn" type="submit" value="Enviar Mensaje">
+                                            <div style="display: none" class="alert-top fixed-top col-12  text-center alert  alert-success" id="estado"> {{ session('estado') }}</div>     
+                                                                                                              
+                                        <form method="POST" action="enviar" class="contact-form"  role="form" id="form-contacto">
+                                            {{ csrf_field() }}
+                                            <input id="nombre" type="text" name="nombre"  class="form-control margin-bottom-25"  placeholder="Nombre">
+                                            <p class="text-danger" id='error_nombre'>{{$errors->first('nombre')}}</p>
+                                           
+                                            <input type="email" id="email" name="email" class="form-control margin-bottom-25" placeholder="Correo Electrónico" >
+                                            <p class="text-danger" id='error_email'>{{$errors->first('email')}}</p>
+                                            
+                                            <textarea  id="mensaje"  name="mensaje" class="form-control margin-bottom-25 contact_textarea" placeholder="Tu mensaje" rows="7"  data-error="Por favor incluye un mensaje."></textarea>
+                                            <p class="text-danger" id='error_mensaje'>{{$errors->first('mensaje')}}</p>
+                                            <input id="btn-contacto" type="submit" value="Enviar Mensaje">
+                                        </form>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -343,6 +356,65 @@ use Carbon\Carbon;
 <script>
     var route='{{asset('images/find.jpg') }}';
     $('.evento').parallax({imageSrc: route});
+
+
+
+    $('#form-contacto').submit(function(e) {
+   e.preventDefault();
+            $("#nombre").css("border", "none");
+            $("#email").css("border", "none");
+            $("#mensaje").css("border", "none");
+            var nombre    = $('input#nombre').val();
+            var email    = $('input#email').val();
+            var mensaje = $('textarea#mensaje').val();
+
+            $.ajaxSetup({
+                    headers: {
+                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: "post",
+                    url: '{{ route('send_mail') }}',
+                    dataType: "json",
+                    data: { nombre: nombre,email: email ,mensaje: mensaje,_token: '{{csrf_token()}}' },
+                    success: function (data){
+                    //console.log(data);   
+                         if($.isEmptyObject(data.error)){
+                            $("#estado").css("display","block");
+                            $("#estado").html(data.success);
+                            $("#estado").fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
+                            $("#form-contacto").trigger("reset");
+
+                          }else{
+                                                   
+                            $.each( data.error, function( key, value ) {
+                                $("#"+key).css("border", "1px solid").css("border-color", "#FC8496");
+                                $("#error_"+key).html(value);
+                                $("#error_"+key).fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
+                              });
+                          }
+                     /*   if (data == 1) {
+                            $(".loading").addClass('d-none');
+                            $("#btn-contacto").removeClass('d-none');
+
+                          $("#alert").css("display","block");
+                          $("#alert").fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
+
+                        }else{
+
+                            //$('.respuesta-contacto').html('El mensaje no pudo ser enviado, intente nuevamente').css('color', 'red');
+
+                        }   */                   
+
+                    }
+
+                });
+
+        });
+
+    
 </script>
 
 @endpush

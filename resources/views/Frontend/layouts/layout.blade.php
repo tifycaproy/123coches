@@ -177,15 +177,15 @@
                         <div class="footer-contact">
                                 
                             <div><i class="fab fa-instagram" style="padding-right: 1rem;"></i>
-                                    <a href="#"><b>Instagram</b></a> 
+                                    <a href="https://www.instagram.com/{{$instagram}}"><b>Instagram</b></a> 
                             </div>
 
                             <div><i class="fab fa-facebook" style="padding-right: 1rem;"></i>
-                                <a href="#"><b>Facebook</b></a> 
+                                <a href="https://www.facebook.com/{{$facebook}}"><b>Facebook</b></a> 
                             </div>
 
                             <div><i class="fab fa-twitter" style="padding-right: 1rem;"></i>
-                                <a href="#"><b>Twitter</b></a> 
+                                <a href="https://twitter.com/{{$twitter}}"><b>Twitter</b></a> 
                             </div>                                    
                         </div>
                     </div>
@@ -194,9 +194,9 @@
                             <h4>Contáctanos</h4>
                             <div class="footer-contact">
                                 <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> <b>Address:</b> 1234 Street Name, City Name, AB 12345</li>
-                                    <li><i class="fas fa-phone"></i> <b>Phone:</b>1-800-123-4567</li>
-                                    <li><i class="fas fa-envelope"></i> <b>Email:</b><a href="#">sales@company.com</a></li>
+                                    <li><i class="fas fa-map-marker-alt"></i> <b>Address:</b> {{$direccion}}</li>
+                                    <li><i class="fas fa-phone"></i> <b>Phone:</b> {{$telefono}}</li>
+                                    <li><i class="fas fa-envelope"></i> <b>Email:</b> {{$email}}</li>
                                 </ul>
             
                                 <i class="fas fa-location-arrow back_icon"></i>
@@ -212,9 +212,9 @@
 <script src="{{asset('js/retina.js')}}"></script> 
 <script type="text/javascript" src="{{asset('js/jquery.parallax.js')}}"></script> 
 <script type="text/javascript" src="{{asset('js/jquery.inview.min.js')}}"></script> 
-<script src="{{asset('js/main.js.')}}"></script> 
+<script src="{{asset('js/main.js')}}"></script> 
 <script type="text/javascript" src="{{asset('js/jquery.fancybox.js')}}"></script> 
-<script src="{{asset('js/modernizr.custom.js.')}}"></script> 
+<script src="{{asset('js/modernizr.custom.js')}}"></script> 
 <script defer="" src="{{asset('js/jquery.flexslider.js')}}"></script> 
 <script src="{{asset('js/jquery.bxslider.js')}}" type="text/javascript"></script> 
 <script src="{{asset('js/jquery.selectbox-0.2.js')}}" type="text/javascript"></script> 
