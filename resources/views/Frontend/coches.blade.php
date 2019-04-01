@@ -37,11 +37,11 @@ use Carbon\Carbon;
                             <div class="inventory margin-bottom-20 clearfix scroll_effect fadeIn" style="visibility: visible; animation-name: fadeIn;">
                                 <input type="checkbox" name="a" class="checkbox compare_vehicle input-checkbox" id="vehicle_1">
                                 <label for="vehicle_1"></label>
-                                <div class="angled_badge blue">
+                                <!--div class="angled_badge blue">
                                     <span>405 HP</span>
-                                </div>
+                                </div-->
                                 <a class="inventory" href="{{url('categorias/listado/detalle', $vehiculo->id)}}">
-                                <div class="title">2012 Porsche Cayenne GTS Sport Utility SUV</div>
+                                <div class="title">{!! date("Y",  strtotime($vehiculo->fecha_matriculacion))!!} {{$vehiculo->marca->descripcion}} {{$vehiculo->modelo->descripcion}}</div>
                                 <img src="{{asset('images/car-1-200x150.jpg')}}" class="preview" alt="preview">
                                 <table class="options-primary">
                                     <tbody><tr>

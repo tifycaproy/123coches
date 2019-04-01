@@ -360,8 +360,8 @@
         </div>
     </div>
     <!--container ends--> 
-    <div class="inventory_box car_listings boxed boxed_full row">
             <h4 class="margin-bottom-25 margin-top-none" style="color: #EC4B25;"><strong>SIMILARES</strong> </h4>
+    <div class="inventory_box car_listings boxed boxed_full row">
         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
             <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
                 <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 

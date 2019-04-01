@@ -176,17 +176,21 @@
                         <h4>Nuestras Redes</h4>
                         <div class="footer-contact">
                                 
+                            @isset($instagram)  
                             <div><i class="fab fa-instagram" style="padding-right: 1rem;"></i>
                                     <a href="https://www.instagram.com/{{$instagram}}"><b>Instagram</b></a> 
                             </div>
-
+                            @endisset
+                            @isset($facebook) 
                             <div><i class="fab fa-facebook" style="padding-right: 1rem;"></i>
                                 <a href="https://www.facebook.com/{{$facebook}}"><b>Facebook</b></a> 
                             </div>
-
-                            <div><i class="fab fa-twitter" style="padding-right: 1rem;"></i>
+                            @endisset
+                            @isset($twitter) 
+                             <div><i class="fab fa-twitter" style="padding-right: 1rem;"></i>
                                 <a href="https://twitter.com/{{$twitter}}"><b>Twitter</b></a> 
-                            </div>                                    
+                            </div>
+                            @endisset                                    
                         </div>
                     </div>
 
@@ -194,9 +198,15 @@
                             <h4>Contáctanos</h4>
                             <div class="footer-contact">
                                 <ul>
-                                    <li><i class="fas fa-map-marker-alt"></i> <b>Address:</b> {{$direccion}}</li>
-                                    <li><i class="fas fa-phone"></i> <b>Phone:</b> {{$telefono}}</li>
-                                    <li><i class="fas fa-envelope"></i> <b>Email:</b> {{$email}}</li>
+                                   @isset($direccion) 
+                                   <li><i class="fas fa-map-marker-alt"></i> <b>Address:</b> {{$direccion}}</li>
+                                   @endisset
+                                   @isset($telefono)
+                                   <li><i class="fas fa-phone"></i> <b>Phone:</b> {{$telefono}}</li>
+                                   @endisset
+                                   @isset($email)
+                                   <li><i class="fas fa-envelope"></i> <b>Email:</b> {{$email}}</li>
+                                   @endisset
                                 </ul>
             
                                 <i class="fas fa-location-arrow back_icon"></i>
