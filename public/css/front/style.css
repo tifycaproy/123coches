@@ -65,7 +65,17 @@
 	
 /*  A. General
 ----------------------------*/
-
+.form-filter{
+	margin-top: 20rem; 
+	position: absolute; 
+	z-index: 999
+}
+.hslider{
+	background-repeat: no-repeat; 
+	background-position: center center; 
+	background-size: cover;
+	height: 70vh;
+}
 
 * {
 	outline: none;
