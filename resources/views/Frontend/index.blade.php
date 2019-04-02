@@ -10,8 +10,8 @@ use Carbon\Carbon;
 <div class="clearfix"></div>
 <section class="banner-wrap">
     <div class="banner">
-
-        <div class="col-lg-4" style="padding-top: 9%;">
+        {{-- FILTRO --}}
+        <div class="col-lg-5 col-xs-12 form-filter" style="">
             <div class="class=search-form margin-top-20 padding-vertical-20"  >
                 <form class="form-signin inventory-heading efficiency-rating text-center padding-vertical-15 margin-bottom-40 "  action="{{route('coches')}}" method="GET">
                     <h2 style="text-align: center;" ><b>Filtro de Búsqueda</b></h2>
@@ -43,19 +43,11 @@ use Carbon\Carbon;
                 </form>
             </div>
         </div>
-
-        <div id=" carousel-example-generic" class=" col-lg-8 carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-             <ol class="carousel-indicators">
-               @foreach( $sliders as $slider )
-                  <li data-target="#carouselExampleControls" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
-               @endforeach
-              </ol>
-          
-            <!-- Wrapper for slides -->
+        {{-- SLIDER --}}
+        <div id=" carousel-example-generic" class=" col-xs-12 carousel slide" style="padding: 0px" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
             @foreach( $sliders as $slider )
-              <div class="item item {{ $loop->first ? 'active' : '' }}  carrousel" style="background-image: url('/images/sliders/{{$slider->url_imagen}}') ">
+              <div class="item item hslider {{ $loop->first ? 'active' : '' }}  carrousel" style="background-image: url('http://localhost/123subasta/public/images/sliders/{{$slider->url_imagen}}');   ">
                 <div class="carousel-caption">
                     <h2 class="a">{{ $slider->titulo }}</h2>
                     <p>  {!! $slider->contenido !!}</p>
@@ -63,49 +55,41 @@ use Carbon\Carbon;
               </div>
             @endforeach    
             </div>
-          
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+            <ol class="carousel-indicators">
+            @foreach( $sliders as $slider )
+              <li data-target="#carouselExampleControls" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+            @endforeach
+            </ol>
         </div>
     </div>
 </section>
-
 
 <section class="content">
     <div class="container">
 
             <div class="row generate_new">
                 <div class="inventory_box car_listings boxed boxed_full row">
-                        <h4 class="margin-bottom-25 margin-top-none" style="color: #EC4B25;"><strong>DESTACADOS</strong> </h4>
-                         @foreach( $vehiculos as $vehiculo )
-                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
-                            <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
-                            <label for="vehicle_387"></label> 
-                           <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
-                            <a class="inventory" href="{{url('categorias/listado/detalle/'.$vehiculo->id)}}">
-                                <div class="title">{{$vehiculo->marca}} {{$vehiculo->modelo}} {{$anio->year}}</div> 
-                                <img src="{{ url('/images/galeria/'.$vehiculo->img) }}"  class="preview" alt="preview" width="200" height="150" data-gallery-images="[{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-1.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-2.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-3.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-4.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-5.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-6.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-7.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-8.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-9.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-10.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-11.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-12.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-13.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-14.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-15.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-16.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-17.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800},{&quot;src&quot;:&quot;https:\/\/demo.themesuite.com\/automotive-wp\/wp-content\/uploads\/2014\/09\/9-carrera-18.jpg&quot;,&quot;w&quot;:3200,&quot;h&quot;:1800}]" data-pswp-uid="1">
+                    <h4 class="margin-bottom-25" style="color: #EC4B25; margin-top: 30px"><strong>DESTACADOS</strong> </h4>
+                        @foreach( $vehiculos as $vehiculo )
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
+                                <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
+                                <label for="vehicle_387"></label> 
+                               <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
+                                <a class="inventory" href="{{url('categorias/listado/detalle/'.$vehiculo->id)}}">
+                                    <div class="title">{{$vehiculo->marca}} {{$vehiculo->modelo}} {{$anio->year}}</div> 
+                                    <img src="{{ url('http://localhost/123subasta/public/images/galeria/'.$vehiculo->img) }}"  class="preview" alt="preview" width="200" height="150" >
                                     <div class="clearfix"></div> 
                                 </a>
                                 <div class="price"> 
                                     <div class="figure"> $43,995</div>
                                 </div> 
                             </div>
+
                         </div>
-                    @endforeach
-                        
-
-                                        
-
+                        @endforeach
                 </div>
+            </div>
 
         <div class="inner-page homepage margin-bottom-none">
             
