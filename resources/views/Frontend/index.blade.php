@@ -191,7 +191,7 @@ use Carbon\Carbon;
                     <!--welcome ends-->
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-right-none sm-padding-left-none md-padding-left-15 xs-padding-left-none padding-bottom-40 scroll_effect fadeInUp" data-wow-delay=".2s" style="z-index: 100; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" style="width: 100%; height: 50%;" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+                            <iframe class="embed-responsive-item" style="width: 100%; height: 50%;" src="{{$video}}" allowfullscreen></iframe>
                         </div>
                     </div>
                     <!--invetory ends--> 
@@ -277,7 +277,7 @@ use Carbon\Carbon;
                         <!--MAP-->
                         <div class="find_map row clearfix">
                             <h2 class="margin-bottom-25 margin-top-none">ENCUÉNTRANOS</h2>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15691.765829240145!2d-66.9451892!3d10.505277346005187!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2sve!4v1548898108972" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            <iframe src="{{$ubicacion}}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </div>
                         <!--MAP--> 
                         <!--CONTACT INFORMATION-->
@@ -394,19 +394,7 @@ use Carbon\Carbon;
                                 $("#error_"+key).html(value);
                                 $("#error_"+key).fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
                               });
-                          }
-                     /*   if (data == 1) {
-                            $(".loading").addClass('d-none');
-                            $("#btn-contacto").removeClass('d-none');
-
-                          $("#alert").css("display","block");
-                          $("#alert").fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
-
-                        }else{
-
-                            //$('.respuesta-contacto').html('El mensaje no pudo ser enviado, intente nuevamente').css('color', 'red');
-
-                        }   */                   
+                          }       
 
                     }
 

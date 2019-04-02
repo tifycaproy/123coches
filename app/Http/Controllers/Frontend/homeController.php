@@ -93,10 +93,8 @@ class homeController extends Controller{
                               ->Transmisions($transmision)
                               ->Procedencias($procedencia)
                               ->Anios($anio)
+                              //->Select(DB::raw("YEAR(fecha_matriculacion) as anio"))
                               ->paginate(3);
-       
-
-
 
            $anios = Vehiculo::select(DB::raw("YEAR(fecha_matriculacion) as anio"), DB::raw("COUNT(id) as cant"))
                                ->where(DB::raw("YEAR(fecha_matriculacion)"), DB::raw("YEAR(fecha_matriculacion)"))
