@@ -71,20 +71,19 @@ use Carbon\Carbon;
                 <div class="inventory_box car_listings boxed boxed_full row">
                     <h4 class="margin-bottom-25" style="color: #EC4B25; margin-top: 30px"><strong>DESTACADOS</strong> </h4>
                         @foreach( $vehiculos as $vehiculo )
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
-                                <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
-                                <label for="vehicle_387"></label> 
-                               <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
-                                <a class="inventory" href="{{url('categorias/listado/detalle/'.$vehiculo->id)}}">
-                                    <div class="title">{{$vehiculo->marca}} {{$vehiculo->modelo}} {{$anio->year}}</div> 
-                                    <img src="{{ url('/images/galeria/'.$vehiculo->img) }}"  class="preview" alt="preview" width="200" height="150" >
-                                    <div class="clearfix"></div> 
-                                </a>
-                                <div class="price"> 
-                                    <div class="figure"> $43,995</div>
-                                </div> 
-                            </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12" style="height: 250px; overflow: hidden; padding-right: 0px">
+                            <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
+                            <a class="" href="{{url('categorias/listado/detalle/'.$vehiculo->id)}}">
+                                <div class="title" style="font-size: 2rem; color: black; margin-bottom: 10px">{{$vehiculo->marca}} {{$vehiculo->modelo}} {{$anio->year}}</div> 
+                                <div class="" style="background-image: url('{{ url('http://localhost/123subasta/public/images/galeria/'.$vehiculo->img) }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; height: 100%; width: 100%">
+                                 
+                                
+                                    <div class="" style="background-color: rgba(0,0,0,.7); position: absolute; bottom: 0; width: 100%; padding: 10px; text-align: center; font-size: 2rem">
+                                        $43,995
+                                    </div>
+                                </div>
+                            </a> 
 
                         </div>
                         @endforeach
@@ -92,9 +91,7 @@ use Carbon\Carbon;
             </div>
 
         <div class="inner-page homepage margin-bottom-none">
-            
-            
-            <!--car-block-wrap ends-->
+
             <div class="row parallax_parent design_2 margin-bottom-40 margin-top-30" style="height: 385px;">
                 <div class="parallax_scroll clearfix" data-velocity="-.5" data-offset="-200" data-image="images/parallax1.jpg" style="background-image: url(&quot;{{asset('images/parallax1.jpg')}}&quot;); background-position: 50% -237px;">
                     <div class="overlay">
@@ -103,7 +100,7 @@ use Carbon\Carbon;
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 padding-left-none xs-margin-bottom-none xs-padding-top-30 scroll_effect bounceInLeft" 
                                 style="visibility: visible; animation-name: bounceInLeft;"> 
                                 <span class="align-center">
-                                    <i class="fas fa-car"></i>
+                                    <i style="" class="fas fa-car"></i>
                                 </span>
                                     <h3>Pymes y Autónomos</h3>
                                     <p>La forma más fácil de tener tu coche de empresa.</p>
@@ -112,7 +109,7 @@ use Carbon\Carbon;
                                 data-wow-delay=".2s" 
                                 style="visibility: visible; animation-delay: 0.2s; animation-name: bounceInLeft;"> 
                                 <span class="align-center">
-                                    <i class="fas fa-building"></i>
+                                    <i style="" class="fas fa-building"></i>
                                 </span>
                                     <h3>Medianas y Grandes Empresas</h3>
                                     <p>Externalización de gestión de flota.</p>
@@ -120,7 +117,7 @@ use Carbon\Carbon;
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-none xs-padding-top-30 scroll_effect bounceInRight" 
                                 data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: bounceInRight;"> 
                                 <span class="align-center">
-                                    <i class="fas fa-binoculars"></i>
+                                    <i style="" class="fas fa-binoculars"></i>
                                 </span>
                                     <h3>Sobre 123Coches</h3>
                                     <p>Conócenos más.</p>
@@ -128,7 +125,7 @@ use Carbon\Carbon;
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 xs-margin-bottom-none xs-padding-top-30 padding-right-none scroll_effect bounceInRight" 
                                 style="visibility: visible; animation-name: bounceInRight;"> 
                                 <span class="align-center">
-                                    <i class="fas fa-phone"></i>
+                                    <i style="" class="fas fa-phone"></i>
                                 </span>
                                     <h3>900 90 65 14</h3>
                                     <p>Solicita tu presupuesto aquí.</p>
@@ -174,9 +171,16 @@ use Carbon\Carbon;
                     </div>
                     <!--welcome ends-->
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-right-none sm-padding-left-none md-padding-left-15 xs-padding-left-none padding-bottom-40 scroll_effect fadeInUp" data-wow-delay=".2s" style="z-index: 100; visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        @isset ($video)
+                            
+                        
                         <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" style="width: 100%; height: 50%;" src="{{$video}}" allowfullscreen></iframe>
+                            {!! html_entity_decode($video) !!}
+
+                            {{-- <iframe class="embed-responsive-item" style="width: 100%; height: 50%;" src="" allowfullscreen></iframe> --}}
+                            
                         </div>
+                        @endisset
                     </div>
                     <!--invetory ends--> 
                 </div>
@@ -223,8 +227,7 @@ use Carbon\Carbon;
                         <div class="row">
                             <div id="carousel-example-generic" class="carousel col-12 slide mt-5" data-ride="carousel">
                                 <div class="carousel-inner">
-                             @foreach($comentarios as $comentario)
-
+                                @foreach($comentarios as $comentario)
                                     <div class="item {{ $loop->first ? 'active' : '' }}">
                                         <div class="owl-item" >
                                             <div class="col-12">
@@ -259,9 +262,14 @@ use Carbon\Carbon;
                 <div class="inner-page">
                     <div class="col-md-12 padding-none"> 
                         <!--MAP-->
+
                         <div class="find_map row clearfix">
                             <h2 class="margin-bottom-25 margin-top-none">ENCUÉNTRANOS</h2>
-                            <iframe src="{{$ubicacion}}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            @isset ($ubicacion)
+                                {!! html_entity_decode($ubicacion) !!}
+                            @endisset
+                            
+                            {{-- <iframe src="{{$ubicacion}}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> --}}
                         </div>
                         <!--MAP--> 
                         <!--CONTACT INFORMATION-->

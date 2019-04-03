@@ -2934,7 +2934,7 @@ div.custom-select:last-child {
 	display: block;
 	font-size: 48px;
 	line-height: 52px;
-	font-weight: 200;
+	/*font-weight: 200;*/
 }
 
 .parallax_parent.design_2 .parallax_scroll {
@@ -6790,6 +6790,7 @@ img.aligncenter {
 
 .find_map iframe{
 	width: 100% !important;
+	height: 300px;
 }
 
 #google-map-listing img {
