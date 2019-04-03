@@ -47,7 +47,7 @@ use Carbon\Carbon;
         <div id=" carousel-example-generic" class=" col-xs-12 carousel slide" style="padding: 0px" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
             @foreach( $sliders as $slider )
-              <div class="item item hslider {{ $loop->first ? 'active' : '' }}  carrousel" style="background-image: url('http://localhost/123subasta/public/images/sliders/{{$slider->url_imagen}}');   ">
+              <div class="item item hslider {{ $loop->first ? 'active' : '' }}  carrousel" style="background-image: url('/images/sliders/{{$slider->url_imagen}}');   ">
                 <div class="carousel-caption">
                     <h2 class="a">{{ $slider->titulo }}</h2>
                     <p>  {!! $slider->contenido !!}</p>
@@ -71,6 +71,7 @@ use Carbon\Carbon;
                 <div class="inventory_box car_listings boxed boxed_full row">
                     <h4 class="margin-bottom-25" style="color: #EC4B25; margin-top: 30px"><strong>DESTACADOS</strong> </h4>
                         @foreach( $vehiculos as $vehiculo )
+
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12" style="height: 250px; overflow: hidden; padding-right: 0px">
                             <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
                             <a class="" href="{{url('categorias/listado/detalle/'.$vehiculo->id)}}">
@@ -83,6 +84,7 @@ use Carbon\Carbon;
                                     </div>
                                 </div>
                             </a> 
+
                         </div>
                         @endforeach
                 </div>
