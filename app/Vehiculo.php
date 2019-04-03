@@ -19,7 +19,7 @@ class Vehiculo extends Model
             'pagos','marca:id,descripcion','modelo:id,descripcion',
             'transmision:id,descripcion','tipo:id,descripcion', 'paisOrigen:id,desc',
             'combustible:id,descripcion', 'lugarRecogida:id,desc', 'oficinaVenta:id,desc',
-            'usuario', 'tiposSubasta.pais:id,desc'
+            'usuario', 'tiposSubasta.pais:id,desc', 'fotos:id,img'
         )->where('vehiculo.id_tipo', 2);
     }
 

@@ -28,8 +28,13 @@ class VehiculoController extends Controller
  		
     	$danos = Dano::where('id_vehiculo',$request->id)->get();
 
+    	$similares = Vehiculo::join('galeria', 'vehiculo.id', '=', 'galeria.id_vehiculo')
+                            ->join('marcas', 'vehiculo.id_marca', '=', 'marcas.id')
+                            ->join('modelos','vehiculo.id_modelo', '=', 'modelos.id')
+                            ->where('vehiculo.id_tipo', 2)
+                            ->select('vehiculo.id','galeria.img', 'fecha_matriculacion', 'kilometraje', 'marcas.descripcion as marca', 'modelos.descripcion as modelo' )->groupBy('vehiculo.id')->inRandomOrder()->limit(4)->get();
 
-    	 return view('Frontend.detalle', compact('galerias', 'vehiculo', 'danos'));
+    	 return view('Frontend.detalle', compact('galerias', 'vehiculo', 'danos', 'similares'));
 
     }
  

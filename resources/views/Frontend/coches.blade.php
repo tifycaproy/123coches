@@ -41,8 +41,9 @@ use Carbon\Carbon;
                                     <span>405 HP</span>
                                 </div-->
                                 <a class="inventory" href="{{url('categorias/listado/detalle', $vehiculo->id)}}">
-                                <div class="title">{!! date("Y",  strtotime($vehiculo->fecha_matriculacion))!!} {{$vehiculo->marca->descripcion}} {{$vehiculo->modelo->descripcion}}</div>
-                                <img src="{{asset('images/car-1-200x150.jpg')}}" class="preview" alt="preview">
+                                    <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
+                                <div class="title">{{$anio->year}} {{$vehiculo->marca->descripcion}} {{$vehiculo->modelo->descripcion}}</div>
+                                <img src="{{url('images/')}}" class="preview" alt="preview">
                                 <table class="options-primary">
                                     <tbody><tr>
                                         <td class="option primary">Kilometrage:</td>

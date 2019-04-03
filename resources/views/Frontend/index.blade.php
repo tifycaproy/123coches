@@ -47,7 +47,7 @@ use Carbon\Carbon;
         <div id=" carousel-example-generic" class=" col-xs-12 carousel slide" style="padding: 0px" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
             @foreach( $sliders as $slider )
-              <div class="item item hslider {{ $loop->first ? 'active' : '' }}  carrousel" style="background-image: url('http://localhost/123subasta/public/images/sliders/{{$slider->url_imagen}}');   ">
+              <div class="item item hslider {{ $loop->first ? 'active' : '' }}  carrousel" style="background-image: url('/images/sliders/{{$slider->url_imagen}}');   ">
                 <div class="carousel-caption">
                     <h2 class="a">{{ $slider->titulo }}</h2>
                     <p>  {!! $slider->contenido !!}</p>
@@ -78,7 +78,7 @@ use Carbon\Carbon;
                                <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
                                 <a class="inventory" href="{{url('categorias/listado/detalle/'.$vehiculo->id)}}">
                                     <div class="title">{{$vehiculo->marca}} {{$vehiculo->modelo}} {{$anio->year}}</div> 
-                                    <img src="{{ url('http://localhost/123subasta/public/images/galeria/'.$vehiculo->img) }}"  class="preview" alt="preview" width="200" height="150" >
+                                    <img src="{{ url('/images/galeria/'.$vehiculo->img) }}"  class="preview" alt="preview" width="200" height="150" >
                                     <div class="clearfix"></div> 
                                 </a>
                                 <div class="price"> 
