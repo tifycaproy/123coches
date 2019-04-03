@@ -45,7 +45,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 left_bar">
-                    <ul class="left-none">
+                    {{-- <ul class="left-none">
                         <li><a href=""><i class="fas fa-user"></i> Login</a>
                         </li>
                         <li><a href=""><i class="fas fa-globe"></i> Languages</a>
@@ -53,13 +53,27 @@
                         <li><i class="fas fa-search"></i>
                             <input type="search" placeholder="Search" class="search_box">
                         </li>
-                    </ul>
+                    </ul> --}}
+                     @isset($instagram)  
+                     <ul class="left-none">
+                         <li><a href="https://www.instagram.com/{{$instagram}}"><i class="fab fa-instagram" style="padding-right: 1rem;"></i></a> </li>
+                        @endisset
+                        @isset($facebook) 
+                        <li><a href="https://www.facebook.com/{{$facebook}}"><i class="fab fa-facebook" style="padding-right: 1rem;"></i></a></li>
+                        @endisset
+                        @isset($twitter) 
+                        <li><a href="https://twitter.com/{{$twitter}}"><i class="fab fa-twitter" style="padding-right: 1rem;"></i></a></li>
+                        @endisset 
+                         </ul>
                 </div>
                 <div class="col-lg-6 ">
                     <ul class="right-none pull-right company_info">
-                        <li><a href="tel:18005670123"><i class="fas fa-phone"></i> 1-800-567-0123</a></li>
+                        <li><a href="tel:18005670123"><i class="fas fa-phone"></i>@isset($telefono)
+                                 {{$telefono}}</li>
+                               @endisset </a></li>
                         <li class="address"><a href="">
-                            <i class="fas fa-map-marker-alt"></i> 107 Sunset Blvd., Beverly Hills, CA  90210</a>
+                            <i class="fas fa-map-marker-alt"></i>  @isset($direccion)  {{$direccion}}</li>
+                               @endisset</a>
                         </li>
                     </ul>
                 </div>

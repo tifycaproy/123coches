@@ -79,7 +79,7 @@ use Carbon\Carbon;
                                 <div class="" style="background-image: url('{{ url('http://localhost/123subasta/public/images/galeria/'.$vehiculo->img) }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; height: 100%; width: 100%">
                                  
                                 
-                                    <div class="" style="background-color: rgba(0,0,0,.7); position: absolute; bottom: 0; width: 100%; padding: 10px; text-align: center; font-size: 2rem">
+                                    <div class="" style="background-color: rgba(0,0,0,.7); position: absolute; bottom: 0; width: 100%; padding: 10px; text-align: center; font-size: 3rem; font-weight: bold">
                                         $43,995
                                     </div>
                                 </div>

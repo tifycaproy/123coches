@@ -26,7 +26,7 @@ use Carbon\Carbon;
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12">
                 <h2>Detalles del Coche</h2>
-                <h4>Powerful Inventory Marketing, Fully Integrated</h4>
+                {{-- <h4>Powerful Inventory Marketing, Fully Integrated</h4> --}}
             </div>
             <div class="col-lg-4 col-md-4 col-sm-6 ">
                 <ul class="breadcrumb">
@@ -351,10 +351,10 @@ use Carbon\Carbon;
                                 <h3 style="color:black">Iva no inc / mes *</h3>
                             <h2 style="color:#EC4B25;"><b>$299.00</b></h2>
                             <h3 style="color:black">48 Meses | 60000 Km <br>
-                                <b>Número de oferta:</b>  3490214</h3> 
+
                                 <br>
                                 <button type="submit" name="add-to-cart" value="1002" class="single_add_to_cart_button button alt lg-button">
-                                        <i class="fas fa-key">&nbsp </i> Comprar
+                                        Obtén tu Cotización
                                 </button>
 
                         </div> 
@@ -366,24 +366,23 @@ use Carbon\Carbon;
     </div>
     <!--container ends--> 
             <h4 class="margin-bottom-25 margin-top-none" style="color: #EC4B25;"><strong>SIMILARES</strong> </h4>
-    <div class="inventory_box car_listings boxed boxed_full row">
+    <div class="inventory_box car_listings boxed boxed_full row" style="margin-bottom: 100px">
          @foreach( $similares as $similar )
-                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                            <div class="inventory clearfix margin-bottom-20 styled_input has-photoswipe"> 
-                                <input type="checkbox" class="checkbox compare_vehicle" id="vehicle_387" data-id="387"> 
-                                <label for="vehicle_387"></label> 
-                               <?php  $anio=Carbon::parse($similar->fecha_matriculacion); ?>
-                                <a class="inventory" href="{{url('categorias/listado/detalle/'.$similar->id)}}">
-                                    <div class="title">{{$similar->marca}} {{$similar->modelo}} {{$anio->year}}</div> 
-                                    <img src="{{ url('http://localhost/123subasta/public/images/galeria/'.$similar->img) }}"  class="preview" alt="preview" width="200" height="150" >
-                                    <div class="clearfix"></div> 
-                                </a>
-                                <div class="price"> 
-                                    <div class="figure"> $43,995</div>
-                                </div> 
-                            </div>
+         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-xs-12" style="height: 250px; overflow: hidden; padding-right: 0px">
+                            <?php  $anio=Carbon::parse($similar->fecha_matriculacion); ?>
+                            <a class="" href="{{url('categorias/listado/detalle/'.$similar->id)}}">
+                                <div class="title" style="font-size: 2rem; color: black; margin-bottom: 10px">{{$similar->marca}} {{$similar->modelo}} {{$anio->year}}</div> 
+                                <div class="" style="background-image: url('{{ url('http://localhost/123subasta/public/images/galeria/'.$similar->img) }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; height: 100%; width: 100%">
+                                 
+                                
+                                    <div class="" style="background-color: rgba(0,0,0,.7); position: absolute; bottom: 0; width: 100%; padding: 10px; text-align: center; font-size: 3rem; font-weight: bold">
+                                        $43,995
+                                    </div>
+                                </div>
+                            </a> 
 
                         </div>
+
                         @endforeach
 
     </div>
