@@ -185,9 +185,9 @@
 <div class="back_to_top" style="display: none; padding-top: 15px;"> <img src="{{asset('images/arrow-up.png')}}" alt=""> </div>
 
 
-{{-- <script type="text/javascript" charset="UTF-8" src="{{asset('js/onion.js')}}"></script> --}}
-{{-- <script type="text/javascript" charset="UTF-8" src="{{asset('js/stats.js')}}"></script> --}}
-{{-- <script type="text/javascript" charset="UTF-8" src="{{asset('js/controls.js')}}"></script> --}}
+<script type="text/javascript" charset="UTF-8" src="{{asset('js/onion.js')}}"></script>
+<script type="text/javascript" charset="UTF-8" src="{{asset('js/stats.js')}}"></script>
+<script type="text/javascript" charset="UTF-8" src="{{asset('js/controls.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/front/wow.min.js')}}"></script>
 {{-- <script type="text/javascript" charset="UTF-8" src="{{asset('js/front/common.js')}}"></script> --}}
 {{-- <script type="text/javascript" charset="UTF-8" src="{{asset('js/front/util.js')}}"></script> --}}
@@ -214,7 +214,7 @@
 <script src="{{asset('js/front/modernizr.custom.js')}}"></script> 
 {{-- <script defer="" src="{{asset('js/front/jquery.flexslider.js')}}"></script>  --}}
 {{-- <script src="{{asset('js/front/jquery.bxslider.js')}}" type="text/javascript"></script>  --}}
-{{-- <script src="{{asset('js/front/jquery.selectbox-0.2.js')}}" type="text/javascript"></script>  --}}
+<script src="{{asset('js/front/jquery.selectbox-0.2.js')}}" type="text/javascript"></script> 
 {{-- <script type="text/javascript" src="{{asset('js/front/jquery.mousewheel.js')}}"></script>  --}}
 {{-- <script type="text/javascript" src="{{asset('js/front/jquery.easing.js')}}"></script> --}}
 
