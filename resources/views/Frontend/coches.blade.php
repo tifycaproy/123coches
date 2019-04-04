@@ -35,11 +35,11 @@ use Carbon\Carbon;
                         <div class="car_listings sidebar  clearfix ">
                         @forelse($vehiculos as $vehiculo)
                             <div class="row" style="height: 200px; margin-top: 30px; border: 1px solid #D3D3D3">
-                                <div class="col-xs-12 col-lg-4" style="background-image: url('{{ asset('images/boxster2_slide.jpg') }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; height: 100%">
+                                <div class="col-xs-12 col-lg-4" style="background-image: url('{{ url('http://localhost/123subasta/public/images/galeria/'.$vehiculo->img) }}'); background-position: center center; background-repeat: no-repeat; background-size: cover; height: 100%">
                                 </div>
                                 <div class="col-xs-12 col-lg-5 " style="height: 100%">
                                     <?php  $anio=Carbon::parse($vehiculo->fecha_matriculacion); ?>
-                                    <h3 class="title" style="margin-top: 0px">{{$anio->year}} {{$vehiculo->marca->descripcion}} {{$vehiculo->modelo->descripcion}}</h3>
+                                    <h3 class="title" style="margin-top: 0px">{{$anio->year}} {{$vehiculo->marca}} {{$vehiculo->modelo}}</h3>
                                     <table class="options-primary">
                                         <tbody>
                                             <tr>
@@ -48,11 +48,11 @@ use Carbon\Carbon;
                                             </tr>
                                             <tr>
                                                 <td class="option primary">Combustible:</td>
-                                                <td class="spec"> {{ $vehiculo->combustible->descripcion }}</td>
+                                                <td class="spec"> {{ $vehiculo->combustible }}</td>
                                             </tr>
                                             <tr>
                                                 <td class="option primary">Transmisión:</td>
-                                                <td class="spec"> {{ $vehiculo->transmision->descripcion }}</td>
+                                                <td class="spec"> {{ $vehiculo->transmision }}</td>
                                             </tr>
                                        
                                             </tbody>

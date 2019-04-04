@@ -84,8 +84,13 @@ class homeController extends Controller{
         $procedencia=$request->procedencia;
         $anio=$request->anio;
         
-        $vehiculos = Vehiculo::groupBy('vehiculo.id')
-                              ->Relaciones()
+        $vehiculos = Vehiculo::join('galeria', 'vehiculo.id', '=', 'galeria.id_vehiculo')
+                            ->join('marcas', 'vehiculo.id_marca', '=', 'marcas.id')
+                            ->join('modelos','vehiculo.id_modelo', '=', 'modelos.id')
+                            ->join('combustible','vehiculo.id_combustible', '=', 'combustible.id')
+                            ->join('transmision','vehiculo.id_transmision', '=', 'transmision.id')
+                            ->where('vehiculo.id_tipo', 2)
+                            ->select('vehiculo.id','galeria.img', 'fecha_matriculacion', 'kilometraje', 'marcas.descripcion as marca', 'modelos.descripcion as modelo', 'cilindrada', 'potencia', 'transmision.descripcion as transmision', 'combustible.descripcion as combustible','normativa_emisiones_co2')
                               ->Marcas($marca)
                               ->Modelos($modelo)
                               ->Combustibles($combustible)
@@ -93,7 +98,8 @@ class homeController extends Controller{
                               ->Transmisions($transmision)
                               ->Procedencias($procedencia)
                               ->Anios($anio)
-                              ->paginate(3);
+                              ->groupBy('vehiculo.id')
+                              ->paginate(10);
 
            $anios = Vehiculo::select(DB::raw("YEAR(fecha_matriculacion) as anio"), DB::raw("COUNT(id) as cant"))
                                ->where(DB::raw("YEAR(fecha_matriculacion)"), DB::raw("YEAR(fecha_matriculacion)"))
@@ -103,7 +109,7 @@ class homeController extends Controller{
 
             $marcascant=Vehiculo::leftjoin('marcas', 'vehiculo.id_marca', '=', 'marcas.id')
                                 ->where('vehiculo.id_tipo', 2)
-                                 ->select('marcas.id','descripcion', DB::raw("(SELECT COUNT(vehiculo.id) FROM  vehiculo where marcas.id = vehiculo.id_marca)  as cant"))
+                                 ->select('marcas.id','descripcion', DB::raw("(SELECT COUNT(vehiculo.id) FROM  vehiculo where marcas.id = vehiculo.id_marca and id_tipo=2)  as cant"))
                                 ->groupBy('marcas.id')
                                 ->orderBy('marcas.descripcion', 'ASC')->get();
 
