@@ -54,31 +54,26 @@ use Carbon\Carbon;
                     </div>
                 </div>
             </div>
-            @php
-                //dd($galerias);
-            @endphp
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 left-content padding-left-none"> 
-                    <!--OPEN OF SLIDER-->
+
                     <div class="">
-
-
- <section class="slider">
-        <div id="slider" class="flexslider">
-          <ul class="slides">
-            @foreach( $galerias as $galeria )
-                <li> <img src="{{ url('http://localhost/123subasta/public//images/galeria/'.$galeria->img) }}" alt="" /> </li>
-            @endforeach
-          </ul>
-        </div>
-        <div id="carousel" class="flexslider">
-          <ul class="slides">
-            @foreach( $galerias as $galeria )
-                <li> <img src="{{ url('http://localhost/123subasta/public//images/galeria/'.$galeria->img) }}" alt="" /> </li>
-            @endforeach
-          </ul>
-        </div>
-      </section>
+             <section class="slider">
+                    <div id="slider" class="flexslider">
+                      <ul class="slides">
+                        @foreach( $galerias as $galeria )
+                            <li> <img src="{{ url('http://localhost/123subasta/public//images/galeria/'.$galeria->img) }}" alt="" /> </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    <div id="carousel" class="flexslider">
+                      <ul class="slides">
+                        @foreach( $galerias as $galeria )
+                            <li> <img src="{{ url('http://localhost/123subasta/public//images/galeria/'.$galeria->img) }}" alt="" /> </li>
+                        @endforeach
+                      </ul>
+                    </div>
+                  </section>
                     </div>
                     <!--CLOSE OF SLIDER--> 
                     <!--Slider End-->
