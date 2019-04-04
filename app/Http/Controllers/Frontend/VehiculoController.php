@@ -21,7 +21,10 @@ class VehiculoController extends Controller
 
 	public function detalleVehiculo(Request $request)
     {
+
     	$galerias=Galeria::where('id_vehiculo', $request->id)->get();
+
+
 
     	$vehiculo = Vehiculo::where('id',$request->id)->get();
     
@@ -33,6 +36,8 @@ class VehiculoController extends Controller
                             ->join('modelos','vehiculo.id_modelo', '=', 'modelos.id')
                             ->where('vehiculo.id_tipo', 2)
                             ->select('vehiculo.id','galeria.img', 'fecha_matriculacion', 'kilometraje', 'marcas.descripcion as marca', 'modelos.descripcion as modelo' )->groupBy('vehiculo.id')->inRandomOrder()->limit(4)->get();
+
+
 
     	 return view('Frontend.detalle', compact('galerias', 'vehiculo', 'danos', 'similares'));
 
