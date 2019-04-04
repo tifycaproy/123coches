@@ -54,33 +54,31 @@ use Carbon\Carbon;
                     </div>
                 </div>
             </div>
-            
+            @php
+                //dd($galerias);
+            @endphp
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 left-content padding-left-none"> 
                     <!--OPEN OF SLIDER-->
-                    <div class="listing-slider">
-                        <!-- <div class="angled_badge red">
-                            <span>Just Arrived</span>
-                        </div> -->
-                       <section class="slider home-banner">
-                            <div class="flexslider" id="home-slider-canvas">
-                                <ul class="slides">
-                                 @foreach( $galerias as $galeria )
-                                    <li data-thumb="{{ url('/images/galeria/'.$galeria->img) }}" "> <img src="{{ url('/images/galeria/'.$galeria->img) }}" alt="" data-full-image="{{ url('/images/galeria/'.$galeria->img) }}" /> </li>
-                                  @endforeach
-                                </ul>
-                            </div>
-                        </section>
-                       <section class="home-slider-thumbs">
-                            <div class="flexslider" id="home-slider-thumbs">
-                                <ul class="slides">
-                                    @foreach( $galerias as $galeria )
-                                    <li data-thumb="{{ url('/images/galeria/'.$galeria->img) }}"> <img src="{{ url('/images/galeria/'.$galeria->img) }}" alt="" data-full-image="{{ url('/images/galeria/'.$galeria->img) }}" /> </li>
-                                  @endforeach
-                                </ul>
-                            </div>
-                        </section>
+                    <div class="">
 
+
+ <section class="slider">
+        <div id="slider" class="flexslider">
+          <ul class="slides">
+            @foreach( $galerias as $galeria )
+                <li> <img src="{{ url('http://localhost/123subasta/public//images/galeria/'.$galeria->img) }}" alt="" /> </li>
+            @endforeach
+          </ul>
+        </div>
+        <div id="carousel" class="flexslider">
+          <ul class="slides">
+            @foreach( $galerias as $galeria )
+                <li> <img src="{{ url('http://localhost/123subasta/public//images/galeria/'.$galeria->img) }}" alt="" /> </li>
+            @endforeach
+          </ul>
+        </div>
+      </section>
                     </div>
                     <!--CLOSE OF SLIDER--> 
                     <!--Slider End-->
@@ -345,7 +343,7 @@ use Carbon\Carbon;
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 right-content padding-right-none">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 right-content padding-right-none">
                     <div class="side-content"> 
                         <div class="efficiency-rating text-center padding-vertical-15 margin-bottom-40">
                                 <h3 style="color:black">Iva no inc / mes *</h3>
@@ -395,6 +393,34 @@ use Carbon\Carbon;
 <script>
     var route='{{asset('images/find.jpg') }}';
     $('.evento').parallax({imageSrc: route});
+
+    
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('#carousel').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        itemWidth: 210,
+        itemMargin: 5,
+        asNavFor: '#slider'
+      });
+
+      $('#slider').flexslider({
+        animation: "slide",
+        controlNav: false,
+        animationLoop: false,
+        slideshow: false,
+        sync: "#carousel",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  
 </script>
 
 @endpush
