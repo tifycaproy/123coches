@@ -27,4 +27,4 @@ Route::get('categorias_coches', 'Frontend\homeController@categorias')->name('cat
 Route::get('sesion', 'Frontend\homeController@sesion')->name('sesion');
 Route::get('registro', 'Frontend\homeController@registro')->name('registro');
 Route::post('enviar', 'Frontend\ContactoController@procesar')->name('send_mail');
-
+Route::post('newsletter', 'NewlesterController@create')->name('newsletter');

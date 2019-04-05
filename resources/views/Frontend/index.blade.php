@@ -143,7 +143,7 @@ use Carbon\Carbon;
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 margin-bottom-none">
                                 <div class=" margin-bottom-30">
                                     <div class="card">
-                                        <div class="face front"><img class="img-responsive" src="{{ url('/images/noticias/'.$noticia->url_imagen) }}" alt=""></div>
+                                        <div class="face front"><img class="img-responsive" src="{{ url('http://localhost/123subasta/public/images/noticias/'.$noticia->url_imagen) }}" alt=""></div>
                                     </div>
                                 </div>
                                 <h4><a href="{{url('noticia/'.$noticia->id)}}">{!! $noticia->titulo!!}</a></h4>
@@ -190,15 +190,17 @@ use Carbon\Carbon;
 
             <section class="message-wrap">
                 <div class="container">
+                                 <div style="display: none" class="alert-top fixed-top col-12  text-center alert  alert-success" id="estado"> {{ session('estado') }}</div>     
                     <div class="text-center d-flex justify-content-center py-5">
                     
                         <h2 class="col-lg-12 col-md-8 col-sm-12 col-xs-12 align-center margin-bottom-25 " style="text-align: center !important;">Suscríbete a nuestro <span class="alternate-font">Newsletter</span></h2>
                 
                         <div class="contact_wrapper information_head">
                             <div class="form_contact margin-bottom-20">
-                                <div id="result"></div>
+                                
+                                    <p class="text-danger" id='error_email'>{{$errors->first('email')}}</p>
                                 <fieldset id="contact_form">
-                                    <input type="email" name="email" class="form-control margin-bottom-25 input-lg" placeholder="Tu correo electrónico...)">
+                                    <input type="email" name="email" id="email" class="form-control margin-bottom-25 input-lg" placeholder="Tu correo electrónico...)">
                                     <input id="submit_btn" type="submit" value="Suscribirse">
                                 </fieldset>
                             </div>
@@ -232,7 +234,7 @@ use Carbon\Carbon;
                                         <div class="owl-item" >
                                             <div class="col-12">
                                                 <div class="d-flex justify-content-center ">
-                                                    <img class="img-circle "  src="{{ url('/images/comentarios/'.$comentario->url_imagen) }}" alt="" width="140" height="140">
+                                                    <img class="img-circle "  src="{{ url('http://localhost/123subasta/public/images/comentarios/'.$comentario->url_imagen) }}" alt="" width="140" height="140">
                                 
                                                     <div class="number" >
                                                         <em><h5>{!! $comentario->contenido !!}</h5></em>
@@ -378,6 +380,48 @@ use Carbon\Carbon;
                             $("#estado").html(data.success);
                             $("#estado").fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
                             $("#form-contacto").trigger("reset");
+
+                          }else{
+                                                   
+                            $.each( data.error, function( key, value ) {
+                                $("#"+key).css("border", "1px solid").css("border-color", "#FC8496");
+                                $("#error_"+key).html(value);
+                                $("#error_"+key).fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
+                              });
+                          }       
+
+                    }
+
+                });
+
+        });
+
+    $('#submit_btn').click(function(e) {
+   e.preventDefault();
+          
+            $("#email").css("border", "none");
+           
+       
+            var email    = $('input#email').val();
+           
+            $.ajaxSetup({
+                    headers: {
+                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: "post",
+                    url: '{{ route('newsletter') }}',
+                    dataType: "json",
+                    data: { email: email ,_token: '{{csrf_token()}}' },
+                    success: function (data){
+                    //console.log(data);   
+                         if($.isEmptyObject(data.error)){
+                            $("#estado").css("display","block");
+                            $("#estado").html(data.success);
+                            $("#estado").fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
+                            $("#email").val("");
 
                           }else{
                                                    
