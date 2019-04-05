@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Newlester extends Model
 {
+	protected $table = 'newlesters';
     protected $fillable = ['mail'];
 }
