@@ -80,7 +80,7 @@ use Carbon\Carbon;
                                  
                                 
                                     <div class="" style="background-color: rgba(0,0,0,.7); position: absolute; bottom: 0; width: 100%; padding: 10px; text-align: center; font-size: 3rem; font-weight: bold">
-                                        $43,995
+                                        ${{$vehiculo->precio}}
                                     </div>
                                 </div>
                             </a> 
