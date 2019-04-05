@@ -198,9 +198,9 @@ use Carbon\Carbon;
                         <div class="contact_wrapper information_head">
                             <div class="form_contact margin-bottom-20">
                                 
-                                    <p class="text-danger" id='error_email'>{{$errors->first('email')}}</p>
+                                    <p class="text-danger" id='error_mail'>{{$errors->first('mail')}}</p>
                                 <fieldset id="contact_form">
-                                    <input type="email" name="email" id="email" class="form-control margin-bottom-25 input-lg" placeholder="Tu correo electrónico...)">
+                                    <input type="email" name="mail" id="mail" class="form-control margin-bottom-25 input-lg" placeholder="Tu correo electrónico...)">
                                     <input id="submit_btn" type="submit" value="Suscribirse">
                                 </fieldset>
                             </div>
@@ -399,10 +399,10 @@ use Carbon\Carbon;
     $('#submit_btn').click(function(e) {
    e.preventDefault();
           
-            $("#email").css("border", "none");
+            $("#mail").css("border", "none");
            
        
-            var email    = $('input#email').val();
+            var email    = $('input#mail').val();
            
             $.ajaxSetup({
                     headers: {
@@ -414,14 +414,14 @@ use Carbon\Carbon;
                     type: "post",
                     url: '{{ route('newsletter') }}',
                     dataType: "json",
-                    data: { email: email ,_token: '{{csrf_token()}}' },
+                    data: { mail: mail ,_token: '{{csrf_token()}}' },
                     success: function (data){
                     //console.log(data);   
                          if($.isEmptyObject(data.error)){
                             $("#estado").css("display","block");
                             $("#estado").html(data.success);
                             $("#estado").fadeIn( 300 ).delay( 1500 ).fadeOut( 1500 );
-                            $("#email").val("");
+                            $("#mail").val("");
 
                           }else{
                                                    
