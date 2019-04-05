@@ -12,15 +12,15 @@ class NewlesterController extends Controller
     public function create(Request $request){
 
 
-      $rules = [
-            'email' => 'required|email',
+      	$rules = [
+            'mail' => 'required|email',
              ];
 
 
- $messages = [
+ 		$messages = [
             
-            'email.required' => 'El Email es Requerido',
-            'email.email' => 'El formato de email es incorrecto',
+            'mail.required' => 'El Email es Requerido',
+            'mail.email' => 'El Formato de Email es Incorrecto',
             ];
         
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -31,7 +31,7 @@ class NewlesterController extends Controller
         }
        
             $new= new Newlester;
-            $new->mail= $request->email;
+            $new->mail= $request->mail;
             $new->save();
            
       
