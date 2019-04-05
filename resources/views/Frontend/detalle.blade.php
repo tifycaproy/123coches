@@ -82,7 +82,7 @@ use Carbon\Carbon;
                         <ul id="myTab" class="nav nav-tabs">
                             <li class="active"><a href="#vehicle" data-toggle="tab">Perfil del vehículo</a></li>
                             <li><a href="#features" data-toggle="tab">Equipamiento</a></li>
-                            <li><a href="#technical" data-toggle="tab">Daños</a></li>
+                            <!--li><a href="#technical" data-toggle="tab">Daños</a></li-->
                         </ul>
                         <div id="myTabContent" class="tab-content margin-top-15 margin-bottom-20">
                             <div class="tab-pane fade in active" id="vehicle">
@@ -318,7 +318,7 @@ use Carbon\Carbon;
                                     @endif
                                 </ul>
                             </div>
-                            <div class="tab-pane fade" id="technical">
+                          <!--div class="tab-pane fade" id="technical">
                                 <div class="col-12">
                                     <h4>Documentación</h4>
                                 </div>
@@ -333,7 +333,7 @@ use Carbon\Carbon;
                                  <h5>Informe de Daños no Registrados</h5>
                               
                                 @endif
-                            </div>
+                            </div-->
                        </div>
                     </div>
                     <div class="clearfix"></div>
