@@ -77,7 +77,7 @@ use Carbon\Carbon;
                                 </div>
                                 <div class="col-xs-12 col-lg-3"  style="height: 100%; background-color: #F4F5F6; padding: 10px">
                                     
-                                    <h3 style="color:#EC4B25; margin-top: 0px"><b>$299.00</b></h3>
+                                    <h3 style="color:#EC4B25; margin-top: 0px"><b>${{$vehiculo->precio}}</b></h3>
                                     <b style="color:black">Iva no inc / mes *</b>
                                     <b style="color:black">48 Meses | 60000 Km </b><br>
 

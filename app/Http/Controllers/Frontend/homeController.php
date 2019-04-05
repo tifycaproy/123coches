@@ -45,7 +45,7 @@ class homeController extends Controller{
                             ->join('marcas', 'vehiculo.id_marca', '=', 'marcas.id')
                             ->join('modelos','vehiculo.id_modelo', '=', 'modelos.id')
                             ->where('vehiculo.id_tipo', 2)
-                            ->select('vehiculo.id','galeria.img', 'fecha_matriculacion', 'kilometraje', 'marcas.descripcion as marca', 'modelos.descripcion as modelo' )->groupBy('vehiculo.id')->inRandomOrder()->limit(4)->get();
+                            ->select('vehiculo.id', 'vehiculo.precio','galeria.img', 'fecha_matriculacion', 'kilometraje', 'marcas.descripcion as marca', 'modelos.descripcion as modelo' )->groupBy('vehiculo.id')->inRandomOrder()->limit(4)->get();
                       
 
         return view('Frontend.index', compact('sliders', 'noticias', 'vehiculos', 'comentarios','marcas', 'modelos', 'tipos'));
@@ -90,7 +90,7 @@ class homeController extends Controller{
                             ->join('combustible','vehiculo.id_combustible', '=', 'combustible.id')
                             ->join('transmision','vehiculo.id_transmision', '=', 'transmision.id')
                             ->where('vehiculo.id_tipo', 2)
-                            ->select('vehiculo.id','galeria.img', 'fecha_matriculacion', 'kilometraje', 'marcas.descripcion as marca', 'modelos.descripcion as modelo', 'cilindrada', 'potencia', 'transmision.descripcion as transmision', 'combustible.descripcion as combustible','normativa_emisiones_co2')
+                            ->select('vehiculo.id', 'vehiculo.precio', 'galeria.img', 'fecha_matriculacion', 'kilometraje', 'marcas.descripcion as marca', 'modelos.descripcion as modelo', 'cilindrada', 'potencia', 'transmision.descripcion as transmision', 'combustible.descripcion as combustible','normativa_emisiones_co2')
                               ->Marcas($marca)
                               ->Modelos($modelo)
                               ->Combustibles($combustible)

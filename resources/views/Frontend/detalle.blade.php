@@ -342,7 +342,7 @@ use Carbon\Carbon;
                     <div class="side-content"> 
                         <div class="efficiency-rating text-center padding-vertical-15 margin-bottom-40">
                                 <h3 style="color:black">Iva no inc / mes *</h3>
-                            <h2 style="color:#EC4B25;"><b>$299.00</b></h2>
+                            <h2 style="color:#EC4B25;"><b>${{$vehiculo[0]->precio}}</b></h2>
                             <h3 style="color:black">48 Meses | 60000 Km <br>
 
                                 <br>
